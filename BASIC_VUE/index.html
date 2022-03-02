@@ -7,62 +7,29 @@
     <title>Vue 기초 익히기</title>
 </head>
 <body>
-    <!--
     <div id="app">
-      <form v-on:submit.prevent="submit">
-    -->
         <!-- 'v-on:'을 축소하면 @ -->
-    <!--
-        <input type="text" :value="text" @keyup="updateText"><br/>
-        {{ text }}<br/>
-        <button type="submit">Submit</button>
-      </form>
+        <button @click="changeMessage()"></button><br/>
+        {{ reversedMessage }}
+        {{ reversedMessage }}
+        {{ reversedMessage }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                text: 'text'
+                message: '헬로우'
             },
             methods: {
-                submit() {
-                    alert('submitted');
-                    console.log('hello');
-                },
-                updateText(event) {
-                    this.text = event.target.value;
-                    console.log(event);
+                changeMessage() {
+                    this.message = '바뀐 헬로우';
                 }
-            }
-        })
-    </script>
-    -->
-    <div id="app">
-        <form v-on:submit.prevent="submit">
-            <!-- :value="text" @keyup="updateText" 이거를 v-model="text"로 축소 -->
-            <!-- <input type="text" :value="text" @keyup="updateText"><br/> -->
-            <input type="text" v-model="text"><br/>
-            {{ text }}<br/>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                text: 'text'
             },
-            methods: {
-                submit() {
-                    alert('submitted');
-                    console.log('hello');
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
                 }
-                /* v-model="text"에 메소드 포함 축소 */
-                //updateText(event) {
-                //  this.text = event.target.value;
-                //}
             }
         })
     </script>
