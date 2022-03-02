@@ -5,35 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue 기초 익히기</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{ message }}
-        <button @click="changeMessage">Click</button><br/>
-        {{ updated }}
+        <!-- <div :class="{ red: isRed, 'font-bold': isBold }">Hello</div> -->
+        <!-- 원래 style은 font-size지만 여기선 fontSize로 쓰고 화면에서는 font-size로 나옴 -->
+        <div :style="{ color: red, fontSize: size }">Hello</div>  
+        <button @click="update">Click</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '헬로우',
-                updated: '아니요'
+                //isRed: false,  //false면 red 클래스가 안들어가고, true면 red 클래스가 들어감
+                //isBold: false
+                red: 'red',
+                size: '30px'
             },
             methods: {
-                changeMessage() {
-                    this.message = '바뀐 헬로우';
-                }
-            },
-            computed: {
-                reversedMessage() {
-                    return this.message.split('').reverse().join('');
-                }
-            },
-            watch: {
-                message(newVal, oldVal) {
-                    console.log(newVal, oldVal);
-                    this.updated = '네';
+                update() {
+                    this.isRed = !this.isRed;
+                    this.isBold = !this.isBold;
                 }
             }
         })
