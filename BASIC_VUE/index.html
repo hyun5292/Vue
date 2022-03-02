@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기</title>
+</head>
+<body>
+    <div id="app">
+      {{ name }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      /* Vue 인스턴스 형식 */
+      new Vue({
+        el: '#app',  //인스턴스가 그려질 지점을 지정
+        data: {
+          name: '박수현'
+        }
+      })
+    </script>
+  </body>
+</html>
