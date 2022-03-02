@@ -7,54 +7,44 @@
     <title>Vue 기초 익히기</title>
 </head>
 <body>
-    <!-- 
+    <!--
     <div id="app">
-        <button v-on:click="alert">Click Me!</button>
+      <form v-on:submit.prevent="submit">
+    -->
+        <!-- 'v-on:'을 축소하면 @ -->
+    <!--
+        <input type="text" :value="text" @keyup="updateText"><br/>
+        {{ text }}<br/>
+        <button type="submit">Submit</button>
+      </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-            
+                text: 'text'
             },
             methods: {
-                alert() {
-                    alert('hi Vue!');
+                submit() {
+                    alert('submitted');
+                    console.log('hello');
+                },
+                updateText(event) {
+                    this.text = event.target.value;
+                    console.log(event);
                 }
             }
         })
-    </script> 
-    -->
-    <!-- 
-    <div id="app">
-        {{ year }}<br/>
-        <button v-on:click="plus">더하기</button>
-        <button v-on:click="minus">빼기</button>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-    new Vue({
-      el: '#app',
-      data: {
-        year: 2022
-      },
-      methods: {
-        plus() {
-          this.year++;
-        },
-        minus() {
-          this.year--;
-        }
-      }
-    })
-    </script> 
+    </script>
     -->
     <div id="app">
-        <!-- javascript의 event.preventDefault() 대신 .prevent 사용 -->
         <form v-on:submit.prevent="submit">
-          <input type="text"><br/>
-          <button type="submit">Submit</button>
+            <!-- :value="text" @keyup="updateText" 이거를 v-model="text"로 축소 -->
+            <!-- <input type="text" :value="text" @keyup="updateText"><br/> -->
+            <input type="text" v-model="text"><br/>
+            {{ text }}<br/>
+            <button type="submit">Submit</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -62,13 +52,17 @@
         new Vue({
             el: '#app',
             data: {
-              
+                text: 'text'
             },
             methods: {
                 submit() {
                     alert('submitted');
                     console.log('hello');
                 }
+                /* v-model="text"에 메소드 포함 축소 */
+                //updateText(event) {
+                //  this.text = event.target.value;
+                //}
             }
         })
     </script>
