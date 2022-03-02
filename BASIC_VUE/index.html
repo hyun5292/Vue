@@ -7,38 +7,70 @@
     <title>Vue 기초 익히기</title>
 </head>
 <body>
+    <!-- 
     <div id="app">
-      {{ nextYear('안녕하세요') }}
-      <!-- 'v-bind:'를 속성 앞에 붙이면 데이터 바인딩 가능, 축소 버전으로 ':'만 붙여도 가능 -->
-      <input :type="type" v-bind:value="inputData"><br/>
-      <a :href="getKossieCoderLink('kossiecoder')">Vue 공부 사이트</a>
+        <button v-on:click="alert">Click Me!</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-   <script>
-    /* Vue 인스턴스 형식 */
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+            
+            },
+            methods: {
+                alert() {
+                    alert('hi Vue!');
+                }
+            }
+        })
+    </script> 
+    -->
+    <!-- 
+    <div id="app">
+        {{ year }}<br/>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
     new Vue({
       el: '#app',
       data: {
-        person: {
-          name: '박수현',
-          age: 25
-        },
-        inputData: 'hello',
-        type: 'text',
-        link: 'https://www.youtube.com/'
+        year: 2022
       },
       methods: {
-        getKossieCoderLink(channel) {
-          return this.link + channel;
+        plus() {
+          this.year++;
         },
-        nextYear(greeting) {
-          return greeting + '! ' + this.person.name + '는/은 내년에 ' + (this.person.age + 1) + '살 입니다!';
-        },
-        otherMethod: function() {
-          this.nextYear();
+        minus() {
+          this.year--;
         }
       }
     })
-   </script>
+    </script> 
+    -->
+    <div id="app">
+        <!-- javascript의 event.preventDefault() 대신 .prevent 사용 -->
+        <form v-on:submit.prevent="submit">
+          <input type="text"><br/>
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              
+            },
+            methods: {
+                submit() {
+                    alert('submitted');
+                    console.log('hello');
+                }
+            }
+        })
+    </script>
 </body>
 </html>
