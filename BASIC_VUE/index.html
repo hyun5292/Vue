@@ -8,28 +8,37 @@
 </head>
 <body>
     <div id="app">
-      {{ nextYear('안녕하세요!') }}
+      {{ nextYear('안녕하세요') }}
+      <!-- 'v-bind:'를 속성 앞에 붙이면 데이터 바인딩 가능, 축소 버전으로 ':'만 붙여도 가능 -->
+      <input :type="type" v-bind:value="inputData"><br/>
+      <a :href="getKossieCoderLink('kossiecoder')">Vue 공부 사이트</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-      /* Vue 인스턴스 형식 */
-      new Vue({
-        el: '#app',
-        data: {
-          person: {
-            name: '박수현',
-            age: 25
-          }
+   <script>
+    /* Vue 인스턴스 형식 */
+    new Vue({
+      el: '#app',
+      data: {
+        person: {
+          name: '박수현',
+          age: 25
         },
-        methods: {
-          nextYear(greeting) {  //메서드 축소 버전
-            return greeting + '! ' + this.person.name + '는/은 내년에 ' + (this.person.age + 1) + '살 입니다!';
-          },
-          otherMethod: function() {  //메서드 원래 선언 방식
-            this.nextYear();  //이것도 같은 결과
-          }
+        inputData: 'hello',
+        type: 'text',
+        link: 'https://www.youtube.com/'
+      },
+      methods: {
+        getKossieCoderLink(channel) {
+          return this.link + channel;
+        },
+        nextYear(greeting) {
+          return greeting + '! ' + this.person.name + '는/은 내년에 ' + (this.person.age + 1) + '살 입니다!';
+        },
+        otherMethod: function() {
+          this.nextYear();
         }
-      })
+      }
+    })
    </script>
 </body>
 </html>
