@@ -8,17 +8,28 @@
 </head>
 <body>
     <div id="app">
-      {{ name }}
+      {{ nextYear('안녕하세요!') }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
       /* Vue 인스턴스 형식 */
       new Vue({
-        el: '#app',  //인스턴스가 그려질 지점을 지정
+        el: '#app',
         data: {
-          name: '박수현'
+          person: {
+            name: '박수현',
+            age: 25
+          }
+        },
+        methods: {
+          nextYear(greeting) {  //메서드 축소 버전
+            return greeting + '! ' + this.person.name + '는/은 내년에 ' + (this.person.age + 1) + '살 입니다!';
+          },
+          otherMethod: function() {  //메서드 원래 선언 방식
+            this.nextYear();  //이것도 같은 결과
+          }
         }
       })
-    </script>
-  </body>
+   </script>
+</body>
 </html>
