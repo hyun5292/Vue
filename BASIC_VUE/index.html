@@ -8,45 +8,37 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            {{ people[0].name }} {{ people[0].age }}
-        </div>
-        <div>
-            {{ people[1].name }} {{ people[1].age }}
-        </div>
-        <div>
-            {{ people[2].name }} {{ people[2].age }}
-        </div>
-        <div>
-            {{ people[3].name }} {{ people[3].age }}
-        </div>
-
-        <hr/>
-
-        <!-- in도 되고 of도 되고 -->
-        <!--<div v-for="person in people">--> 
-        <div v-for="(person, index) in people" :key="person.id">
-            {{ person.name }} {{ person.age }} {{ index }}
-        </div>
+        {{ name }}
+        <button @click="changeText">Click</button>
+    </div>
+    <div id="app-1">
+        {{ name }}
+        <button @click="changeText">Click</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        new Vue({
+        const app = new Vue({
             el: '#app',
             data: {
-                people: [
-                    { id='1', name: 'a', age: 20 },
-                    { id='2', name: 'b', age: 21 },
-                    { id='3', name: 'c', age: 22 },
-                    { id='4', name: 'd', age: 23 },
-                    { id='5', name: 'e', age: 24 },
-                    { id='6', name: 'e', age: 25 },
-                ]
+                name: '박수현'
+            }, 
+            methods: {
+                changeText() {
+                    app1.name = '박수현 updated';
+                }
             }
-            /*
-            index를 key로 잡으면 0, 1, 2, 3, 4 중 중간에 하나가 삭제되면 
-            0, 2, 4 이런 식으로 돼서 key의 고유성?에 안좋으니 안쓰는게 좋음
-            */
+        })
+
+        const app1 = new Vue({
+            el: '#app-1',
+            data: {
+                name: '박수현1'
+            }, 
+            methods: {
+                changeText() {
+                    app.name = '박수현1 updated';
+                }
+            }
         })
     </script>
 </body>
