@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue 기초 익히기</title>
-    <style>
-        .red {
-            color: red;
-        }
-
-        .font-bold {
-            font-weight: bold;
-        }
-    </style>
+    <title>Vue 기초 익히기</title> 
 </head>
 <body>
     <div id="app">
-        <!-- <div :class="{ red: isRed, 'font-bold': isBold }">Hello</div> -->
-        <!-- 원래 style은 font-size지만 여기선 fontSize로 쓰고 화면에서는 font-size로 나옴 -->
-        <div :style="{ color: red, fontSize: size }">Hello</div>  
-        <button @click="update">Click</button>
+        <!-- 
+        <template v-if="number === 1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number === 2">Yes</div>
+        <div v-else>No</div>
+        <br/>
+        <button @click="increaseNumber">Increase</button> {{ number }}
+        -->
+        <div v-show="show">Yes</div>
+        <br/>
+        <button @click="toggle">Toggle</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                //isRed: false,  //false면 red 클래스가 안들어가고, true면 red 클래스가 들어감
-                //isBold: false
-                red: 'red',
-                size: '30px'
+                number: 1,
+                show: false
             },
             methods: {
-                update() {
-                    this.isRed = !this.isRed;
-                    this.isBold = !this.isBold;
+                increaseNumber() {
+                    this.number++;
+                },
+                toggle() {
+                    this.show = !this.show;
                 }
             }
         })
