@@ -8,38 +8,108 @@
 </head>
 <body>
     <div id="app">
+        <!-- 
         {{ name }}
         <button @click="changeText">Click</button>
+
+        <hr/> 
+        -->
+
+        <change-button></change-button>
     </div>
+    <hr/><hr/>
     <div id="app-1">
+        <!-- 
         {{ name }}
         <button @click="changeText">Click</button>
-    </div>
+
+        <hr/> 
+        -->
+        
+        <change-button></change-button>
+    </div> 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                name: '박수현'
-            }, 
+        // Vue.component('hello-world', {
+        //     template: `<div>Hello World</div>`
+        // });
+        //같은 기능을 하는 부분(데이터, 메소드)을 component로 줄여주기
+        // Vue.component('change-button', {
+        //     template: `
+        //         <div>
+        //             {{ name }}
+        //             <hello-world></hello-world>
+        //             <button @click="changeText">Click</button>
+        //         </div>
+        //     `, //Vue.js3에서는 안해도 되지만 Vue.js2에서는 꼭 한 태그 안에 다 들어가야함
+        //     data() {  //object가 주소로 넘어가기 때문에 같이 사용하는 다른 부분까지 값이 변경되기 때문에 함수로 만듦
+        //         return {
+        //             name: '박수현'
+        //         }
+        //     },
+        //     methods: {
+        //         changeText() {
+        //             this.name = '박수현 updated';
+        //         }
+        //     }
+        // });
+
+        const HelloWorld = {
+            template: '<div>Hello World</div>'
+        };
+
+        const changeBtn = {
+            components: {
+                'hello-world': HelloWorld
+            },
+            template: `
+                <div>
+                    {{ name }}
+                    <hello-world></hello-world>
+                    <button @click="changeText">Click</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '박수현'
+                }
+            },
             methods: {
                 changeText() {
-                    app1.name = '박수현 updated';
+                    this.name = '박수현 updated';
                 }
             }
-        })
+        };
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                'change-button': changeBtn
+            }
+            // data: {
+            //     name: '박수현'
+            // }, 
+            // methods: {
+            //     changeText() {
+            //         this.name = '박수현 updated';
+            //     }
+            // }
+        });
 
         const app1 = new Vue({
             el: '#app-1',
-            data: {
-                name: '박수현1'
-            }, 
-            methods: {
-                changeText() {
-                    app.name = '박수현1 updated';
-                }
+            components: {
+                'change-button': changeBtn
             }
-        })
+        //     data: {
+        //         name: '박수현'
+        //     }, 
+        //     methods: {
+        //         changeText() {
+        //             this.name = '박수현 updated';
+        //         }
+        //     }
+        });
     </script>
 </body>
 </html>
