@@ -1,16 +1,17 @@
 <template>
     <div>
-        <h1>{{ title }}</h1>
-        <p>{{ name }}</p>
-        <button @click="updateName">Change Name</button>
+        <p>header</p>
+        <slot name="header" :slotData="slotData"></slot>
+        <p>Body</p>
+        <slot></slot>
+        <p>footer</p>
     </div>
 </template>
 
 <script>
 export default ({
-    props: {  //props는 자식에서 직접적인 수정 불가
+    props: {
         title: {
-            //type: Number, //숫자일때
             type: String,
             default: 'default title',
             //required: true,
@@ -22,6 +23,7 @@ export default ({
     },
     data() {
         return {
+            slotData: 'coder'
             //name: '박수현',
         }
     },
@@ -34,5 +36,5 @@ export default ({
 </script>
 
 <style scoped>
-
+p { color: orange; }
 </style>
