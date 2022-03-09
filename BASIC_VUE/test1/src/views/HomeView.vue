@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>This is Home page</h1>
-    <testPage />
+    <testPage title="home title" name="박수현" />
   </div>
 </template>
 
