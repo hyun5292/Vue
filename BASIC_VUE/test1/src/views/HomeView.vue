@@ -1,22 +1,37 @@
 <template>
   <div>
     <h1>This is Home page</h1>
-    <testPage title="home title" name="박수현" />
+    <form action="">
+      <!--
+      <label for="">Name</label>
+      <input type="text" v-model="name" style="padding: 20px; border: 2px solid green;"><br/>
+      -->
+      <!-- <InputField :name="name" @update-name="updateName"/> -->
+      <!-- <InputField :name="name" @update-name="name = $event.target.value"/> -->
+      <InputField v-model="name" />
+      <button>Submit</button>
+    </form>
+    {{ name }}
   </div>
 </template>
 
 <script>
-import testPage from '@/components/testPage.vue';
+import InputField from '@/components/InputField.vue';
 
 export default ({
   components: {
-    testPage
+    InputField
   },
   data() {
     return {
-      name: '박수현'
+      name: ''
     }
-  }
+  },
+  // methods: {
+  //   updateName(name) {
+  //     this.name = name;
+  //   }
+  // }
 })
 </script>
 
