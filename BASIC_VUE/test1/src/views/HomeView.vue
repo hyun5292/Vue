@@ -24,14 +24,38 @@ export default ({
   },
   data() {
     return {
-      name: ''
+      name: '박수현'
     }
   },
-  // methods: {
-  //   updateName(name) {
-  //     this.name = name;
-  //   }
-  // }
+  beforeCreate() {
+    console.log('beforeCreate', this.name);
+  },
+  created() {
+    console.log('created', this.name);
+  },
+  beforeMount() {
+    alert('beforeMount');
+  },
+  mounted() {
+    alert('mounted');
+  },
+  beforeUpdate() {
+    alert('beforeUpdate');
+  },
+  updated() {
+    alert('updated');
+  },
+  beforeDestroy() {
+    alert('beforeDestroy');
+  },
+  destroyed() {
+    alert('destroyed');
+  },
+  methods: {
+    updateName() {
+      this.name = 'hello';
+    }
+  }
 })
 </script>
 
