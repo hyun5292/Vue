@@ -19,9 +19,10 @@ export default {
     },
     methods: {
         addTodo(e) {
-            this.$emit('add-todo', e.target.value);
-            //input 박스에 내용 입력하고 enter 누르면 빈칸이 되도록 하는 것
+            this.$store.commit('ADD_TODO', e.target.value);
             this.todoText = '';
+            //this.$emit('add-todo', e.target.value);
+            //input 박스에 내용 입력하고 enter 누르면 빈칸이 되도록 하는 것
         }
     }
 }
