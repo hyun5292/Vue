@@ -14,8 +14,12 @@
       v-for="todo in todos" 
       :key="todo.id"
       :todo="todo"
+      @toggle-checkbox="toggleCheckbox"
+      @click-delete="deleteTodo"
     />
     <!-- :todo는 props -->
+
+    {{ todos }}
   </div>
 </template>
 
@@ -36,6 +40,14 @@ export default {
     }
   },
   methods: {
+    deleteTodo(id) {
+      // const index = this.todos.findIndex(todo => {
+      //   return todo.id === id;
+      // });
+
+      // this.todos.splice(index, 1);
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    },
     addTodo(e) {
       this.todos.push({
         id: Math.random(),  //중복될 수 있지만 임시로 한 것
@@ -44,6 +56,13 @@ export default {
       });
       //input 박스에 내용 입력하고 enter 누르면 빈칸이 되도록 하는 것
       this.todoText = '';
+    },
+    toggleCheckbox({id, checked}) {
+      const index = this.todos.findIndex(todo => {
+        return todo.id === id;
+      });
+
+      this.todos[index].checked = checked;
     }
   }
 }
