@@ -10,7 +10,9 @@ export default createStore({
     users: []
   },
   getters: {  //computed
-
+    numberOfCompletedTodo: state => {
+      return state.todos.filter(todo => todo.checked).length;
+    }
   },
   mutations: {  //데이터를 바꾸는 곳
     SET_USERS(state, users) {

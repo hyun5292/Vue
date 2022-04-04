@@ -1,7 +1,8 @@
 <template>
   <div>
       User List
-      <div v-for="user in users" :key="user.id">
+      <!--<div v-for="user in users" :key="user.id">-->
+      <div v-for="user in people" :key="user.id">
           {{ user.name }}
       </div>
   </div>
@@ -9,39 +10,24 @@
 
 <script>
 //import axios from 'axios';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-    // data() {
-    //     return {
-    //         users: []
-    //     }
-    // },
     created() {
-        // axios.get('https://jsonplaceholder.typicode.com/users')
-        //     .then(res => {
-        //         this.users = res.data;
-        //     });
-        //     /*
-        //     const a = 1;
-        //     console.log(a);
-        //     가 있다고 치면 
-        //     axios로 부르고 밑에 작업들 먼저 하고 응답오면 다시 .then() 안에 작동
-        //     */
         this.getUsers();
     },
-    computed: {
-        users() {
-            return this.$store.state.users;
-        }
+    computed: {  //mapState랑 mapGetters는 여기 안에
+        // ...mapState(['users'])
+        ...mapState({people: 'users'})
+        // users() {
+        //     return this.$store.state.users;
+        // }
     },
-    methods: {
-        getUsers() {
-            // axios.get('https://jsonplaceholder.typicode.com/users')
-            // .then(res => {
-            //     this.users = res.data;
-            // });
-            this.$store.dispatch('getUsers');
-        }
+    methods: {  //mapActions는 여기 안에
+        ...mapActions(['getUsers'])
+        // getUsers() {
+        //     this.$store.dispatch('getUsers');
+        // }
     }
 }
 </script>
