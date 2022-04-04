@@ -12,7 +12,7 @@ export default {
         // },
         numberOfCompletedTodo() {
             //return this.todos.filter(todo => todo.checked).length;
-            return this.$store.getters.numberOfCompletedTodo;
+            return this.$store.getters['todo/numberOfCompletedTodo'];
         }
     }
 }
