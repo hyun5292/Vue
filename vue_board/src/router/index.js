@@ -14,7 +14,7 @@ export default new VueRouter({
       component: Read
     },
     {
-      path: '/create',
+      path: '/create/:contentId?',
       name: 'Create',
       component: Create
     },
