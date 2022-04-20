@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Board from '@/components/boardCom.vue'
+import cntDetail from '@/components/cntDetailCom.vue'
 
 Vue.use(VueRouter)
 
@@ -13,9 +14,14 @@ export default new VueRouter({
       component: HomeView
     },
     {
-      path: '/board/free',
+      path: '/board/free/',
       name: 'Board',
       component: Board
+    },
+    {
+      path: '/board/free/detail/:contentId',
+      name: 'cntDetail',
+      component: cntDetail
     },
   ]
 });
