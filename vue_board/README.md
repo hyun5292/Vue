@@ -1,9 +1,14 @@
-# 유튜브 강의 들으면서 클론코딩한 Vue 게시판 만들기
+# 유튜브 강의 들으면서 클론코딩한 Vue & Bootstrap 게시판 만들기
 ## 경로: https://www.youtube.com/watch?v=ZIiTjMiZzQo&list=PLyjjOwsFAe8ITIDUNsU_x4XNbPJeOvs-b&index=5
-
+*사진 다음에 필기 있음*
+<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EB%A9%94%EC%9D%B8.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EB%8C%93%EA%B8%80.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EC%88%98%EC%A0%95.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EA%B8%80%EC%9E%91%EC%84%B1.png?raw=true"  width="100%"/><br/>
+------
 **1. VSCode, NodeJS, Vue CLI 설치**<br/>
 **2. 프로젝트 생성**<br/>
-<img src="https://github.com/hyun5292/FrontEndLibrary/blob/main/RandomQuote/%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4.png"  width="50%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%83%9D%EC%84%B1.png?raw=true"  width="90%"/><br/>
 **3. BootStrap 설치(참고: https://bootstrap-vue.org/docs)**<br/>
 - npm install vue bootstrap bootstrap-vue
 - Main.js 수정<br/>
