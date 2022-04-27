@@ -8,6 +8,7 @@
   - npm install vue bootstrap bootstrap-vue
   - Main.js 수정
   //main.js
+  ```
   …
   import { BootstrapVue } from 'bootstrap-vue'
 	
@@ -17,6 +18,6 @@
   Vue.config.productionTip = false
 	
   Vue.use(BootstrapVue)
-
+  ```
 
 
