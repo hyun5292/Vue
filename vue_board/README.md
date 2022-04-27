@@ -20,8 +20,8 @@
   Vue.use(BootstrapVue)
   ```
 **4. Data 폴더와  index.js 파일 생성<br/>
-  - 데이터 참고: https://github.com/lelana0824/bootstrap-bbs/blob/2%EA%B0%95/src/data/index.js
-**5. Components 폴더에 headerCom.vue 파일 생성 및 App.vue 연결<br/>
+  - 데이터 참고: https://github.com/lelana0824/bootstrap-bbs/blob/2%EA%B0%95/src/data/index.js<br/>
+**5. Components 폴더에 headerCom.vue 파일 생성 및 App.vue 연결**<br/>
   ```
   //App.vue
   <template>
@@ -45,21 +45,21 @@
   ```
   //headerCom.vue
   <template>
-	  <div>
-  		<b-navbar toggleable="lg" type="dark" variant="info">
-  			<b-navbar-brand href="#">Vue.js로 게시판 만들기</b-navbar-brand>
+    <div>
+      <b-navbar toggleable="lg" type="dark" variant="info">
+  	<b-navbar-brand href="#">Vue.js로 게시판 만들기</b-navbar-brand>
 	
-			<b-navbar-toggle target="nav_collapse" />
+	<b-navbar-toggle target="nav_collapse" />
 	
-			<b-collapse is-nav id="nav_collapse">
-				<b-navbar-nav>
-					<b-nav-item href="#">공지사항</b-nav-item>
-					<b-nav-item href="#">자유게시판</b-nav-item>
-					<b-nav-item href="#">구인구직</b-nav-item>
-				</b-navbar-nav>
-			</b-collapse>
-		</b-navbar>
-	</div>
+	<b-collapse is-nav id="nav_collapse">
+	  <b-navbar-nav>
+	    <b-nav-item href="#">공지사항</b-nav-item>
+	    <b-nav-item href="#">자유게시판</b-nav-item>
+	    <b-nav-item href="#">구인구직</b-nav-item>
+	  </b-navbar-nav>
+	</b-collapse>
+      </b-navbar>
+    </div>
   </template>
   ```
 
