@@ -7,8 +7,8 @@
 **3. BootStrap 설치(참고: https://bootstrap-vue.org/docs)**<br/>
   - npm install vue bootstrap bootstrap-vue
   - Main.js 수정
-  //main.js
   ```
+  //main.js
   …
   import { BootstrapVue } from 'bootstrap-vue'
 	
