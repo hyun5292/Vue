@@ -1,823 +1,315 @@
-# 유튜브 강의 들으면서 클론코딩한 Vue & Bootstrap 게시판 만들기
-## 경로: https://www.youtube.com/watch?v=ZIiTjMiZzQo&list=PLyjjOwsFAe8ITIDUNsU_x4XNbPJeOvs-b&index=5
+# JWT를 이용하여 로그인 애플리케이션 만들기
+## 경로: https://www.youtube.com/watch?v=JR0jSscNNd4&list=PLtht1_et-35AQSnfVkqkjdfhBX_P-9U4-&index=3
 *사진 다음에 필기 있음*
-<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EB%A9%94%EC%9D%B8.png?raw=true"  width="100%"/><br/>
-<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EB%8C%93%EA%B8%80.png?raw=true"  width="100%"/><br/>
-<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EC%88%98%EC%A0%95.png?raw=true"  width="100%"/><br/>
-<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%EA%B8%80%EC%9E%91%EC%84%B1.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/login/frontend/src/assets/%EB%A9%94%EC%9D%B8.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/login/frontend/src/assets/%EB%A1%9C%EA%B7%B8%EC%9D%B8_%EC%84%B1%EA%B3%B5.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/login/frontend/src/assets/%EB%A1%9C%EA%B7%B8%EC%9D%B8_after.png?raw=true"  width="100%"/><br/>
+<img src="https://github.com/hyun5292/Vue/blob/main/login/frontend/src/assets/%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83.png?raw=true"  width="100%"/><br/>
 ------
-**1. VSCode, NodeJS, Vue CLI 설치**<br/>
-**2. 프로젝트 생성**<br/>
-<img src="https://github.com/hyun5292/Vue/blob/main/vue_board/src/assets/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%83%9D%EC%84%B1.png?raw=true"  width="90%"/><br/>
-**3. BootStrap 설치(참고: https://bootstrap-vue.org/docs)**<br/>
-- npm install vue bootstrap bootstrap-vue
-- Main.js 수정<br/>
-**//main.js**
-```
-…
-import { BootstrapVue } from 'bootstrap-vue'
-	
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-	
-Vue.config.productionTip = false
-	
-Vue.use(BootstrapVue)
-```
-**4. Data 폴더와  index.js 파일 생성**<br/>
-- 데이터 참고: https://github.com/lelana0824/bootstrap-bbs/blob/2%EA%B0%95/src/data/index.js <br/>
+**1. Vue CLI 설치 (참고: https://cli.vuejs.org/#getting-started)**<br/>
+**2. 파일 생성**<br/>
+- login 파일 생성
+- 터미널 frontend 생성<br/>
+-> vue create frontend 실행<br/>
+- 터미널 backend 생성<br/>
+-> mkdir backend<br/>
+-> npm init<br/>
+- backend 파일 안에 api-server.js 파일 생성<br/>
 
-**5. Components 폴더에 headerCom.vue 파일 생성 및 App.vue 연결**<br/>
+**3. express 설치 (참고: https://expressjs.com/ko/starter/installing.html)**<br/>
+- backend 터미널에서 npm install express
+- Hello World 테스트
+**//api-server.js**
+```
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log();
+});
+```
+-> http://localhost:3000/ 접속<br/>
+**4. App.vue 초기화**<br/>
 **//App.vue**
 ```
 <template>
-  <div id="app">
-    <Header />
-    <router-view/>
+  <div class="app">
+    <div v-if="state.loggedIn">안녕하세요? 홍길동님</div>
+    <div v-else>
+      <label for="loginId">
+        <sapn>아이디</span>
+        <input type="text" id="loginId" />
+      </label>
+      <label for="loginPw">
+        <span>패스워드</span>
+        <input type="password"  id="loginPw" />
+      </label>
+      <hr />
+     <button>로그인</button>
+    </div>
   </div>
 </template>
-	
+
 <script>
-import Header from '@/components/Header';
-	
-export default {
-  name: 'App',
-  components: {
-    Header,
-  }
-}
-</script>
-```
-**//headerCom.vue**
-```
-<template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Vue.js로 게시판 만들기</b-navbar-brand>
-      <b-navbar-toggle target="nav_collapse" />
-      <b-collapse is-nav id="nav_collapse">
-	<b-navbar-nav>
-	  <b-nav-item href="#">공지사항</b-nav-item>
-	  <b-nav-item href="#">자유게시판</b-nav-item>
-	  <b-nav-item href="#">구인구직</b-nav-item>
-	</b-navbar-nav>
-      </b-collapse>
-     </b-navbar>
-  </div>
-</template>
-```
-**6. Components 폴더에 boardCom.vue 파일 생성**<br/>
-**//boardCom.vue**<br/>
-복붙 경로: https://bootstrap-vue.org/docs/components/table
-- Router에 경로 추가
-**//router/index.js**
-```
-…
-import Board from '@/components/boardCom.vue';
-…
-export default new VueRouter({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/board/free',
-      name: 'Board',
-      component: Board
-    }
-  ]
-});
-```
-**7. Components/boardCom.vue에 data/index.js 연결**<br/>
-**//boardCom.vue**<br/>
-```
-<template>
-  <b-table striped hover :items="items" :fields"fields"></b-table>
-</template>
-	
-<script>
-import data from '@/data'
-	
-export default {
-  data() {
-    //정렬 역순으로
-    let items = data.Content.sort((a, b) => { return b.content_id - a.content_id });
-    //글쓴이 추가(Content/user_id와 User/user_id 연결)
-    items = items.map(contentItem => { return { ...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name } });
-	
-    return {
-      fields: [
-        {
-          key: 'content_id',
-          label: '글번호'
-        },
-        {
-	  key: 'title',
-	  label: '제목'
-        },
-        {
-          key: 'created_at',
-	  label: '작성일'
-        },
-        {
-	  key: 'user_name',
-	  label: '글쓴이'
-        }
-      ],
-      items: data.Content
-    }
-  }
-}
-</script>
-```
-**8. Read**<br/>
-- boardCom.vue에 @row-clicked 추가<br/>
-**//boardCom.vue**
-```
-<template>
-  <b-table … @row-clicked="rowClick"></b-table>
-</template>
-	
-<script>
-…
-methods: {
-  rowClick(item) {
-    this.$router.push({
-      path: `/board/free/detail/${item.content_id}`
-    });
-  }
-}
-</script>
-```
-- components 폴더에 cntDetailCom.vue 생성<br/>
-**//cntDetailCom.vue**
-```
-<template>
-  <div>
-      <b-card>
-          <div class="content-detail-content-info">
-              <div class="content-detail-content-info-left">
-                  <div class="content-detail-content-info-left-number">
-                      {{ contentId }}
-                  </div>
-                  <div class="content-detail-content-info-left-subject">
-                      {{ title }}
-                  </div>
-              </div>
-              <div class="content-detail-content-info-right">
-                  <div class="content-detail-content-info-right-user">
-                      글쓴이: {{ user }}
-                  </div>
-                  <div class="content-detail-content-info-right-created">
-                      등록일: {{ created }}
-                  </div>
-              </div>
-          </div>
-          <div class="content-detail-content">
-              {{ context }}
-          </div>
-          <div class="content-detail-button">
-              <b-button variant="primary">수정</b-button>
-              <b-button variant="success">삭제</b-button>
-          </div>
-          <div class="content-detail-comment">
-              덧글
-          </div>
-      </b-card>
-  </div>
-</template>
-	
-<script>
-import data from '@/data';
+import { reactive } from "vue";
 
 export default {
-    name: 'cntDetailCom',
-    data() {
-        const contentId = Number(this.$route.params.contentId);
-        const contentData = data.Content.filter(item => item.content_id === contentId)[0];
-        return {
-            contentId: contentId,
-            title: contentData.title,
-            context: contentData.context,
-            user: data.User.filter(item => item.user_id === contentData.user_id)[0].name,
-            created: contentData.created_at
-        }
-    },
-}
-</script>
-```
-- Router/index.js에 임의로 경로 설정<br/>
-**//router/index.js**
-```
-…
-{
-  path: '/board/free/detail/:contentId',
-  name: 'cntDetail',
-  component: cntDetail
-}
-…
-```
-**9. Delete**<br/>
-**//cntDetailCom.vue**
-```
-<template>
-    …
-    <b-button variant="success" @click="deleteData">삭제</b-button>
-    …
-</template>
-
-<script>
-  …
-  methods: {
-    deleteData() {
-      const content_index = data.Content.findIndex(item => item.content_id === this.contentId);
-      data.Content.splice(content_index, 1);
-      this.$router.push({
-        path: '/board/free'
-      });
-    }
-  }
-</script>
-```
-**10. Create**<br/>
-- components 폴더에 createCom.vue 파일 생성 & router 경로 설정<br/>
-**//router/index.js**
-```
-…
-import Create from '@/components/createCom.vue'
-…
-{
-  path: '/board/free/create',
-  name: 'Create',
-  component: Create
-},
-…
-//createCom.vue
-<template>
-  <div>
-    <b-input v-model="subject" placeholder="제목을 입력해주세요"></b-input>
-    <b-form-textarea
-      v-model="context"
-      placeholder="내용을 입력해주세요"
-      rows="3"
-      max-rows="6"
-    ></b-form-textarea>
-    <b-button @click="uploadContent">저장</b-button>
-    <b-button @click="cancel">취소</b-button>
-  </div>
-</template>
-	
-<script>
-import data from '@/data';
-
-export default {
-  name: 'createCom',
-  data() {
-    return {
-      subject: "",
-      context: "",
-      userId: 1,
-      createdAt: '2022-04-21 15:55:55',
-      updatedAt: null
-    }
-  },
-  methods: {
-    uploadContent() {
-      let items = data.Content.sort((a, b) => { return b.content_id - a.content_id });
-      const content_id = items[0].content_id + 1;
-
-      data.Content.push({
-        content_id:  content_id,
-        user_id: this.userId,
-        title: this.subject,
-        context: this.context,
-        created_at: this.createdAt,
-        updated_at: this.updatedAt
-      });
-      
-      this.$router.push({
-        path: `/board/free`
-      });
-    },
-    cancel() {
-      this.$router.push({
-        path: `/board/free`
-      });
-    }
-  }
-}
-</script>
-```
-- boardCom.vue에 글쓰기 버튼 생성<br/>
-**//boardCom.vue**
-```
-<template>
-  …
-  <b-button @click="writeContent">글쓰기</b-button>
-</template>
-
-<script>
-…
-methods: {
-  …
-  writeContent() {
-    this.$router.push({
-      path: `/board/free/create`
+  setup() {
+    const state = reactive({
+      loggedIn: false
     })
+
+    return { state, };
   }
 }
 </script>
 ```
-**11. Update**<br/>
-- cntDetailCom.vue 파일 수정 버튼 함수 적용<br/>
-**//cntDetailCom.vue**
+**5. axios 설치**<br/>
+- frontend 터미널에서 npm i axios 실행
+- vue에서 proxy 설정으로 CORS 해결(참고: https://genie247.tistory.com/116)
+**//vue.config.js - 원래 있어서 거기에 했는데 없으면 만들면 됨**<br/>
+```
+const { defineConfig } = require('@vue/cli-service')
+	module.exports = defineConfig({
+  transpileDependencies: true,
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000"
+      }
+    }
+  }
+})
+```
+**6. bodyParser 설치 (참고: https://www.npmjs.com/package/body-parser)**<br/>
+- backend 터미널에서 npm i body-parser 실행
+**//api-server.js**<br/>
+```
+…
+const bodyParser = require("body-parser");
+…
+app.use(bodyParser.json());
+…
+```
+**7. 서버랑 연결하기**<br/>
+**//api-server.js**<br/>
+```
+…
+const members = [
+  {
+    id: 3,
+    name: "도서관",
+    loginId: "lib",
+    loginPw: "africa"
+  },
+  {
+    id:4,
+    name: "홍길동",
+    loginId: "a",
+    loginPw: "1"
+  }
+];
+
+app.use(bodyParser.json());
+
+app.get('/api/account', (req, res) => {
+  res.send(401);
+});
+
+app.post('/api/account', (req, res) => {
+  const loginId = req.body.loginId;
+  const loginPw = req.body.loginPw;
+
+  const member = members.find(m => m.loginId = loginId && m.loginPw === loginPw);
+
+  if(member) {
+    res.send(member);
+  } else {
+    res.send(404);
+  } 
+});
+…
+```
+**//App.vue**<br/>
 ```
 <template>
-  …
-  <div class="content-detail-button">
-    <b-button variant="primary" @click="updateData">수정</b-button>
-    <b-button variant="primary" @click="deleteData">삭제</b-button>
+  <div class="app">
+    <div v-if="state.account.id">안녕하세요? {{ state.account.name }}님</div>
+    <div v-else>
+      <label for="loginId">
+        <span>아이디</span>
+        <input type="text" id="loginId" v-model="state.form.loginId" />
+      </label>
+      <label for="loginPw">
+        <span>패스워드</span>
+        <input type="password" id="loginPw" v-model="state.form.loginPw" />
+      </label>
+      <hr />
+      <button @clilck="submit()">로그인</button>
+    </div>
   </div>
-  …
 </template>
 
 <script>
-…
-methods: {
-  …
-  updateData() {
-    this.$router.push({
-      path: `/board/free/create/${this.contentId}`
+import axios from "axios";
+import { reactive } from "vue";
+
+export default {
+  setup() {
+    const state = reactive({
+      account: {
+        id: null,
+        name: "",
+      },
+      form: {
+        loginId: "",
+        loginPw: "",
+      }
     });
-  }
-}
-</script>
-```
-- createCom.vue 파일 수정<br/>
-**//createCom.vue**
-```
-<template>
-  …
-  <b-button @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
-  <b-button @click="cancel">취소</b-button>
-</template>
+    
+    const submit = () => {
+      const args = {
+        loginId: state.form.loginId,
+        loginPw: state.form.loginPw
+      };
 
-<script>
-  …
-  data() {
-    return {
-      …
-      updateMode: this.$route.params.contentId > 0 ? true : false
-    }
-  },
-  created() {
-    if(this.$route.params.contentId > 0) {
-      const contentId = Number(this.$route.params.contentId);
-      this.updateObject = data.Content.filter(item => item.content_id === contentId)[0];
-      this.subject = this.updateObject.title;
-      this.context = this.updateObject.context;
-    }
-  },
-  methods: {
-    …
-    updateContent() {
-      this.updateObject.title = this.subject;
-      this.updateObject.context = this.context;
-      this.$router.push({
-        path: '/board/free/'
+      axios.post("/api/account", args).then((res) => {
+        alert("로그인에 성공했습니다.");
+        state.account = res.data;
+      }).catch(() => {
+        alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
       });
-    }
-  }
-</script>
-```
-**12. 덧글 구현하기**<br/>
-- cmtListCom.vue 파일 생성<br/>
-**//cmtListCom.vue**
-```
-<template>
-  <div>
-    {{ contentId }}
-  </div>
-</template>
+    };
+    
+    axios.get("/api/account").then((res) => {
+      state.account = res.data;
+    });
 
-<script>
-import data from '@/data';
-
-export default {
-  name: 'cmtListCom',
-  props: {
-    contentId: Number,
+    return { state, submit, };
   },
-  data() {
-    return { comments: data.Comment.filter(item => item.content_id === this.contentId) }
-  }
 }
 </script>
 ```
-- cntDetailCom.vue 파일에서 cmtListCom.vue 호출<br/>
-**//cntDetailCom.vue**
+**8. cookie-parser 설치**<br/>
+- 로그인 된 정보를 저장해야 새로 고침 해도 로그인이 유지됨
+- backend 터미널에 npm i cookie-parser 실행
+**//api-server.js**<br/>
 ```
-<template>
+…
+const cookieParser = require('cookie-parser');
+…
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+app.get('/api/account', (req, res) => {
+  if(req.cookies && req.cookies.account) {
+    const member = JSON.parse(req.cookies.account);
+
+    if(member.id) {
+      return res.send(member);
+    }
+  }
+  res.send(401);
+});
+
+app.post('/api/account', (req, res) => {
+  …
+  if(member) {
+    const options = {
+      domain: "localhost",
+      path: "/",
+      httpOnly: true,
+    };
+    res.cookie("account", JSON.stringify(member), options);
+    res.send(member);
+  }
+  …
+});
+…
+```
+**9. JWT 설치**<br/>
+- 로그인 보안 관련
+- backend 터미널에서 npm i jsonwebtoken 설치
+
+**//api-server.js**<br/>
+```
+…
+app.get('/api/account', (req, res) => {
+  if(req.cookies && req.cookies.token) {
+    jwt.verify(req.cookies.token, "abc1234567", (err, decoded) => {
+      if(err) {
+        return res.send(401);
+      }
+      res.send(decoded);
+    });
+  } else {
+    res.send(401);
+  }
+});
+
+app.post('/api/account', (req, res) => {
+  …
+  if(member) {
     …
-    <div class="content-detail-comment">
-      <CommentList :contentId="contentId" />
-    </div>
-  </b-card>
-</template>
-
-<script>
-…
-import CommentList from './cmtListCom.vue';
-…
-components: {
-  CommentList,
-},
-…
-</script>
+    //첫 번째는 멤버에 대한 객체 정보
+    //두 번째는 임의의 암호화 키
+    //세 번째는 JWT 토큰이 언제까지 유효한지
+  const token = jwt.sign({
+    id: member.id,
+    name: member.name,
+  }, "abc1234567", {
+    expiresIn: "15m",
+    issuer: "africalib"
+  });
+  res.cookie("token", token, options);
+  …
 ```
-- cmtListItemCom.vue 파일 생성<br/>
-**//cmtListItemCom.vue**
+**10. 로그아웃**<br/>
+**//App.vue**<br/>
 ```
 <template>
-  <div class="comment-list-item">
-    <div class="comment-list-item-name">
-      <div>{{ name }}</div>
-      <div>{{ commentObj.created_at }}</div>
-    </div>
-    <div class="comment-list-item-context">{{ commentObj.context }}</div>
-    <div class="comment-list-item-button">
-      <b-button variant="info">수정</div>
-      <b-button variant="info">삭제</div>
-    </div>
+  …
+  <div v-if="state.account.id">
+    안녕하세요? {{ state.account.name }}님
+   <button @click="logout()">로그아웃</button>
   </div>
-</template>
-
-<script>
-import data from '@/data';
-
-export default {
-  name: "cmtListItemCom",
-  props: {
-    commentObj: Object,
-  },
-  data() {
-    return {
-      name: data.User.filter(
-        item => item.user_id === this.commentObj.user_id
-      )[0].name,
-    }
-  }
-}
-</script>
-
-<style scoped>
-참고 복붙: https://github.com/lelana0824/bootstrap-bbs/blob/4%EA%B0%95/src/components/CommentListItem.vue
-</style>
-```
-- cmtListCom.vue 파일 수정<br/>
-**//cmtListCom.vue**
-```
-<template>
-  <div>
-    <div :key="item.comment_id" v-for="item in comments">
-      <CmtListItem :commentObj="item" />
-    </div>
-  </div>
-</template>
-
-<script>
-import data from '@/data';
-import CmtListItem from './cmtListItemCom.vue';
-
-export default {
-  …
-  components: {
-    CmtListItem,
-  },
-  …
-}
-</script>
-```
-**13. 덧글 작성하기**<br/>
-- cmtCreateCom.vue 파일 생성<br/>
-**//cmtCreateCom.vue**
-```
-<template>
-  <div>
-    <b-input-group :prepend="name" class="mt-3">
-      <b-form-textarea
-        id="textarea"
-        v-model="context"
-        :placeholder="'코멘트를 달아주세요~!'"
-        rows="3"
-        max-rows="6"
-      ></b-form-textarea>
-    </b-input-group>
-    <b-input-group-append>
-      <b-button variant="info" @click="createComment">작성하기</b-button>
-    </b-input-group-append>
-  </div>
-</template>
-
-<script>
-import data from '@/data';
-
-export default {
-  name: "cmtCreateCom",
-  props: {
-    contentId: Number,
-    reloadComment: Function,
-  },
-  data() {
-    return {
-      name: "르라나",
-      context: ""
-    }
-  },
-  methods: {
-    createComment() {
-      data.Comment.push(
-        {
-           comment_id: data.Comment[data.Comment.length - 1].comment_id + 1,
-           user_id: 1,
-           content_id: this.contentId,
-           context: this.context,
-           created_at: '2022-04-25 14:11:11',
-           updated_at: null
-        }
-      );
-    }
-  }
-}
-</script>
-```
-- cmtListCom.vue 파일에 덧글 작성하기 버튼 추가<br/>
-**//cmtListCom.vue**
-```
-<template>
-  …
-  <CmtCreate :contentId="contentId" />
-</template>
-
-<script>
-…
-import CmtCreate from './cmtCreateCom.vue';
-…
-components: {
-  CmtListItem,
-  CmtCreate,
-}
-…
-</script>
-```
-- 덧글 작성 시 바로 reload<br/>
-**//cmtListCom.vue**
-```
-<template>
-  …
-  <CmtCreate :contentId="contentId" :reloadComment="reloadComment" />
-</template>
-
-<script>
-…
-methods: {
-  reloadComment() {
-    this.comments = data.Comment.filter(item => item.content_id === this.contentId)
-  }
-}
-</script>
-```
-**//cmtCreateCom.vue**
-```
-…
-<script>
-  …
-  props: {
-    contentId: Number,
-    reloadComment: Function,
-  },
-  …
-  methods: {
-    createComment() { 
-      …
-      this.reloadComment();
-      this.context = ""; 
-    }
-  }
-</script>
-```
-**14. 대댓글 작성하기**<br/>
-- cmtListItemCom.vue 수정<br/>
-**//cmtListItemCom.vue**
-```
-<template>
-  …
-  <template v-if="subCommentList.length > 0">
-    <div
-      class="comment-list-item-subComment-list"
-      :key="item.subcomment_id"
-      v-for="item in subCommentList"
-    >
-      <div class="comment-list-item-name">
-        <div>{{ item.user_name }}</div>
-        <div>{{ item.created_at }}</div>
-      </div>
-      <div class="comment-list-item-context">{{ item.context }}</div>
-      <div class="comment-list-item-button">
-        <b-button variant="info">수정</b-button>
-        <b-button variant="info">삭제</b-button>
-      </div>
-    </div>
-  </template>
-</template>
-
-<script>
-…
-data() {
-  return {
-    …
-    subCommentList: data.SubComment.filter(
-      item => item.comment_id === this.commentObj.comment_id
-    ).map(subCommentItem => ({
-      ...subCommentItem,
-      user_name: data.User.filter(
-        item => item.user_id === subCommentItem.user_id
-      )[0].name
-    })),
-  }
-}
-</script>
-	
-<style scoped>
-참고 복붙: https://github.com/lelana0824/bootstrap-bbs/blob/4%EA%B0%95/src/components/CommentListItem.vue
-</style>
-```
-- 대댓글 작성하기<br/>
-**//cmtListItemCom.vue**
-```
-<template>
-    …
-    <template v-if="subCommentList.length > 0">
-      <CommentCreate
-        isSubComment="true"
-        commentId="commentObj.comment_id"
-      />
-    </template>
-    ...
-</template>
-
-<script>
-import CommentCreate from './cmtCreateCom.vue';
-
-export default {
-  …
-  components: {
-    CommentCreate,
-  },
-  …
-  data() {
-    return {
-      …
-      subCommentCreateToggle: false,
-    }
-  }
-}
-</script>
-```
-**//cmtCreateCom.vue**
-```
-<template>
-  …
-  <b-input-group-append>
-    <b-button variant="info" @click="isSubComment ? createSubComment() : createComment()">작성하기</b-button>
-  </b-input-group-append>
   ...
 </template>
 
 <script>
-export default {
-  props: {
-    …
-    commentId: Number,
-    isSubComment: Boolean,
-  },
-  methods: {
-    …
-    createSubComment() {
-      data.SubComment.push(
-        {
-          subcomment_id: data.SubComment[data.SubComment.length - 1].subcomment_id + 1,
-          user_id: 1,
-          comment_id: this.commentId,
-          context: this.context,
-          created_at: '2022-04-25 14:11:11',
-          updated_at: null
-        }
-      );
-      this.context = "";
-    }
-  }
+…
+ const logout = () => {
+    axios.delete("/api/account").then(() => {
+      alert("로그아웃 되었습니다.");
+      state.account.id = id;
+      state.account.name = name;
+      state.form.loginId = "";
+      state.form.loginPw = "";
+    });
+  };
+...
+</script>
+```
+**//api-server.js**<br/>
+```
+…
+app.get('/api/account', (req, res) => {
+…
+else {
+  res.sendStatus(401);
 }
-</script>
-```
-- 대댓글 작성하기 버튼 추가 & reload<br/>
-**//cmtListItemCom.vue**
-```
-<template>
-  <div>
-    <div class="comment-list-item">
-      …
-      <div class="comment-list-item-button">
-        …
-        <b-button variant="info" @click="subCommentToggle">덧글달기</b-button>
-      </div>
-    </div>
-    <template v-if="subCommentCreateToggle">
-      <CommentCreate
-        …
-        :reloadSubComments="reloadSubComments"
-        :subCommentToggle="subCommentToggle"
-      />
-    </template>
-    ...
-  </div>
-</template>
-
-<script>
 …
-methods: {
-  subCommentToggle() {
-    this.subCommentCreateToggle = !this.subCommentCreateToggle;
-  },
-  reloadSubComments() {
-    this.subCommentList = data.SubComment.filter(
-        item => item.comment_id === this.commentObj.comment_id
-      ).map(subCommentItem => ({
-        ...subCommentItem,
-        user_name: data.User.filter(
-          item => item.user_id === subCommentItem.user_id
-        )[0].name
-     }));
+});
+
+app.delete('/api/account', (req, res) => {
+  if(req.cookies && req.cookies.token) {
+    res.clearCookie("token");
   }
-}
-</script>
+  res.sendStatus(200);
+});
 ```
-**//cmtCreateCom.vue**
-```
-…
-<script>
-  …
-  props: {
-    …
-    subCommentToggle: Function,
-    reloadSubComments: Function,
-  },
-  methods: {
-    createSubComment() {
-      …
-      this.subCommentToggle();
-      this.reloadSubComments();
-      this.context = "";
-    }
-  }
-</script>
-```
-**15. 페이지네이션 구현하기(참고: https://bootstrap-vue.org/docs/components/pagination)**<br/>
-- b-pagination은 URL 이동 X -> 우린 b-pagination 사용
-- b-pagination은 URL 이동 O
-- boardCom.vue에 참고 사이트 복붙<br/>
-**//boardCom.vue**
-```
-<template>
-  <b-table … :per-page="perPage" :current-page="currentPage" … />
-  <b-pagination
-    v-model="currentPage"
-    :total-rows="rows"
-    :per-page="perPage"
-    align="center"
-  ></b-pagination>
-  …
-</template>
-
-<script>
-…
-return {
-  currentPage: 1,
-  perPage: 10,
-  …
-},
-…
-computed: {
-  rows() {
-    return this.items.length;
-  }
-}
-</script>
-```
-**16. CSS 마무리**<br/>
-- 이건 사실상 그냥 복붙 사용
-- 참고: https://github.com/lelana0824/bootstrap-bbs/blob/4%EA%B0%95/src/components/CommentListItem.vue
-
-
