@@ -44,7 +44,7 @@ export default {
       top: 50%;
       left: 50%;
       width: 100%;
-      transform: translate(-50%, -40%);
+      transform: translate(-51%, -42%);
       .welcome-title {
         margin-bottom: 1rem;
         font-size: 3rem;
