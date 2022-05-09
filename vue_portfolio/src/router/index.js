@@ -11,22 +11,22 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'welcome',
+      name: 'Welcome',
       component: welcome
     },
     {
-      path: '/contact',
-      name: 'contact',
+      path: '/Contact',
+      name: 'Contact',
       component: contact
     },
     {
-      path: '/skills',
-      name: 'skills',
+      path: '/Skills',
+      name: 'Skills',
       component: skills
     },
     {
-      path: '/projects',
-      name: 'projects',
+      path: '/Projects',
+      name: 'Projects',
       component: projects
     },
   ]
