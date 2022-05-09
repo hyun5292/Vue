@@ -28,7 +28,7 @@ export default {
   height: 100vh;
   background-image: linear-gradient(
       115deg,
-      rgba(38, 38, 38, 0.7),
+      rgba(38, 38, 38, 0.6),
       rgba(29, 29, 29, 0.6)
     ),
     url(../assets/heartchair.png);
@@ -44,7 +44,7 @@ export default {
       top: 50%;
       left: 50%;
       width: 100%;
-      transform: translate(-50%, -25%);
+      transform: translate(-50%, -40%);
       .welcome-title {
         margin-bottom: 1rem;
         font-size: 3rem;

@@ -1,34 +1,15 @@
 <template>
   <div class="nav-wrap">
-    <div class="menu-wrap">
-      <span>menu</span>
-      <i class="fas fa-chevron-down" id="nav-icon"></i>
-    </div>
+    <i class="fa-solid fa-bars" id="menu"></i>
     <nav class="nav">
-      <router-link 
+      <router-link
         class="nav-li"
-        :style="[PageName === 'Welcome' ? {color: '#f28907'} : {color: '#f0f0f2'}]"
+        v-for="(item, index) in nav_list"
+        :key="index"
+        :style="[PageName === item ? {color: '#f28907'} : {color: '#f0f0f2'}]"
         @click.native="ChangePage()"
-        to="/"
-      >Welcome</router-link>
-      <router-link 
-        class="nav-li" 
-        :style="[PageName === 'Contact' ? {color: '#f28907'} : {color: '#f0f0f2'}]"
-        @click.native="ChangePage()"
-        to="/Contact/"
-      >Contact</router-link>
-      <router-link 
-        class="nav-li" 
-        :style="[PageName === 'Skills' ? {color: '#f28907'} : {color: '#f0f0f2'}]"
-        @click.native="ChangePage()"
-        to="/Skills/"
-      >Skills</router-link>
-      <router-link 
-        class="nav-li" 
-        :style="[PageName === 'Projects' ? {color: '#f28907'} : {color: '#f0f0f2'}]"
-        @click.native="ChangePage()"
-        to="/Projects/"
-      >Projects</router-link>
+        :to="item === 'Welcome' ? '/' : '/' + item"
+      >{{item}}</router-link>
     </nav>
   </div>
 </template>
@@ -39,7 +20,7 @@ export default {
   data() {
     return { 
       PageName: this.$route.name,
-      list: ['Welcome', 'Contact', 'Skills', 'Projects']
+      nav_list: ['Welcome', 'Contact', 'Skills', 'Projects']
     };
   },
   methods: {
@@ -57,14 +38,8 @@ a, ul, li {
 }
 
 .nav-wrap {
-  .menu-wrap {
+  #menu {
     display: none;
-    #nav-icon {
-
-    }
-    &:hover {
-      
-    }
   }
   .nav {
     display: flex;
@@ -74,12 +49,31 @@ a, ul, li {
     .nav-li {
       padding: 0 10px;
       color: #f0f0f2;
-        // &:first-child {
-        //   color: #f28907;
-        // }
         &:hover {
           color: #f29f05;
         }
+    }
+  }
+}
+
+//반응형
+//메뉴 축소
+@media (max-width: 768px) {
+  .nav-wrap {
+    position: relative;
+    #menu {
+      display: block;
+      font-size: 2rem;
+    }
+    .nav {
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      top: 72px;
+      right: 0px;
+      z-index: 10;
+      border-radius: 0 0 0 1rem;
+      background-color: rgba(38, 38, 38, 0.7);
     }
   }
 }

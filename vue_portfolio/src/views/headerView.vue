@@ -39,6 +39,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    min-width: 360px;
     z-index: 10;
     padding: 0 2rem;
     background-color: rgba(38, 38, 38, 0.7);
@@ -55,5 +56,21 @@ export default {
         font-size: 1.2rem;
       }
     }
+}
+
+//반응형
+//header 미세 조정
+@media (max-width: 420px) {
+  #header {
+    padding: 0 1rem;
+    .logo {
+      span {
+        font-size: 2.5rem;
+      }
+      #text-port {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 </style>
