@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrap">
-    <i class="fa-solid fa-bars" id="menu"></i>
-    <nav class="nav">
+    <i @click="ShowMenu()" class="fa-solid fa-bars" id="menu"></i>
+    <nav class="nav" :class="[i_state ? 'show' : 'hide' ]">
       <router-link
         class="nav-li"
         v-for="(item, index) in nav_list"
@@ -20,12 +20,17 @@ export default {
   data() {
     return { 
       PageName: this.$route.name,
-      nav_list: ['Welcome', 'Contact', 'Skills', 'Projects']
+      nav_list: ['Welcome', 'Contact', 'Skills', 'Projects'],
+      i_state: false,
     };
   },
   methods: {
     ChangePage() {
       this.PageName = this.$route.name;
+    },
+    ShowMenu() {
+      this.i_state = !this.i_state;
+      console.log(this.i_state);
     }
   }
 }
@@ -56,11 +61,17 @@ a, ul, li {
   }
 }
 
+.show {
+  display: flex !important;
+}
+.hide {
+  display: none;
+}
+
 //반응형
 //메뉴 축소
 @media (max-width: 768px) {
   .nav-wrap {
-    position: relative;
     #menu {
       display: block;
       font-size: 2rem;
@@ -69,7 +80,7 @@ a, ul, li {
       position: absolute;
       display: none;
       flex-direction: column;
-      top: 72px;
+      top: 3rem;
       right: 0px;
       z-index: 10;
       border-radius: 0 0 0 1rem;
