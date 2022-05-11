@@ -75,7 +75,9 @@ $white: rgba(240, 240, 242, 1);
 
 //반응형
 //미세 조정
-@media (max-width: 420px) {
-
+@media (max-width: 480px) {
+  #app {
+    font-size: 1.2rem;
+  }
 }
 </style>

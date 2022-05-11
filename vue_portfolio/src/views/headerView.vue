@@ -61,7 +61,7 @@ export default {
 
 //반응형
 //header 미세 조정
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   #header {
     padding: 0 1rem;
     .logo {

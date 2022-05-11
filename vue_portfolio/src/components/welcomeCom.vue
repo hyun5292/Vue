@@ -54,4 +54,17 @@ export default {
     }
   }
 }
+
+//반응형
+@media (max-width: 480px) {
+  #welcome {
+    .welcome-wrap {
+      .welcome-cont {
+        .welcome-title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
 </style>
