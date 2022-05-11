@@ -1,16 +1,18 @@
 <template>
   <div class="nav-wrap">
-    <i @click="ShowMenu()" class="fa-solid fa-bars" id="menu"></i>
-    <nav class="nav" :class="[i_state ? 'show' : 'hide' ]">
-      <router-link
-        class="nav-li"
-        v-for="(item, index) in nav_list"
-        :key="index"
-        :style="[PageName === item ? {color: '#f28907'} : {color: '#f0f0f2'}]"
-        @click.native="ChangePage()"
-        :to="item === 'Welcome' ? '/' : '/' + item"
-      >{{item}}</router-link>
-    </nav>
+    <i @click="i_state = !i_state" class="fa-solid fa-bars" id="menu"></i>
+    <Transition name="slide-fade">
+      <nav v-if="i_state" class="nav">
+        <router-link
+          class="nav-li"
+          v-for="(item, index) in nav_list"
+          :key="index"
+          :style="[PageName === item ? {color: '#f28907'} : {color: '#f0f0f2'}]"
+          @click.native="changePage()"
+          :to="item === 'Welcome' ? '/' : '/' + item"
+        >{{item}}</router-link>
+      </nav>
+    </Transition>
   </div>
 </template>
 
@@ -21,16 +23,24 @@ export default {
     return { 
       PageName: this.$route.name,
       nav_list: ['Welcome', 'Contact', 'Skills', 'Projects'],
-      i_state: false,
+      i_state: true,
     };
   },
+  mounted() {
+        window.addEventListener('resize', this.checkWidth);
+	},
+  beforeDestroy() {
+        window.removeEventListener('resize', this.checkWidth);
+  },
   methods: {
-    ChangePage() {
+    changePage() {
       this.PageName = this.$route.name;
     },
-    ShowMenu() {
-      this.i_state = !this.i_state;
-      console.log(this.i_state);
+    checkWidth() {
+      var width = window.innerWidth;
+      if(width > 768) {
+        this.i_state = true;
+      }
     }
   }
 }
@@ -61,11 +71,18 @@ a, ul, li {
   }
 }
 
-.show {
-  display: flex !important;
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
 }
-.hide {
-  display: none;
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(50px);
+  opacity: 0;
 }
 
 //반응형
@@ -78,9 +95,8 @@ a, ul, li {
     }
     .nav {
       position: absolute;
-      display: none;
       flex-direction: column;
-      top: 3rem;
+      top: 72px;
       right: 0px;
       z-index: 10;
       border-radius: 0 0 0 1rem;

@@ -39,6 +39,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    height: 72px;
     min-width: 360px;
     z-index: 10;
     padding: 0 2rem;

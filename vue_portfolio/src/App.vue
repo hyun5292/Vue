@@ -72,4 +72,10 @@ $white: rgba(240, 240, 242, 1);
   color: #f0f0f2;
   word-break: keep-all;
 }
+
+//반응형
+//미세 조정
+@media (max-width: 420px) {
+
+}
 </style>
