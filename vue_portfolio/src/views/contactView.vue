@@ -65,11 +65,8 @@ a {
 }
 
 #contact {
-    position: fixed;
-    top: 72px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    margin-top: 72px;
+    height: calc(100vh - 72px);
     color: #262626;
     background-color: #f0f0f2;
     .contact-cont {
@@ -127,4 +124,5 @@ a {
         }
     }
 }
+
 </style>

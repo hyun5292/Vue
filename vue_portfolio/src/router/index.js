@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import welcome from '@/components/welcomeCom.vue'
+import welcome from '@/views/welcomeView.vue'
 import contact from '@/views/contactView.vue'
 import skills from '@/components/skillsCom.vue'
 import projects from '@/components/projectsCom.vue'
