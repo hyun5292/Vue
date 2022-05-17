@@ -17,7 +17,7 @@
             끊임없이 공부하는 개발자가 되겠습니다!
           </p>
         </div>
-        <a class="data-down" href="./assets/resume.pdf" download="박수현_980512_이력서">이력서 다운로드</a>
+        <a class="data-down" href="/file/resume.pdf" download="박수현_980512_이력서">이력서 다운로드</a>
       </div>
       <div class="line"></div>
       <div class="info-wrap">
@@ -59,74 +59,72 @@
   </div>
 </template>
 
-<script>
-export default {
-    name: 'contactVue',
-}
-</script>
-
 <style lang="scss" scoped>
 a {
-    color: #262626;
     text-decoration: none;
-    &:hover {
-        color: #f29f05;
-    }
 }
 
 #contact {
-    margin-top: 72px;
-    padding: 0 1rem;
+    position: fixed;
+    top: 72px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
     color: #262626;
     background-color: #f0f0f2;
     .contact-cont {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-evenly;
-        padding: 2rem 0;
-    .intro-wrap {
-        padding: 0 1rem;
-        text-align: left;
-        .intro-cont {
-            line-height: 1.2;
-            #intro-title {
-                margin: 20px 0;
-                font-weight: 600;
-            }
-            #intro-sect {
-                font-size: 1.4rem;
+        padding-top: 3rem;
+        .intro-wrap {
+            padding: 0 1rem;
+            text-align: left;
+            .intro-cont {
+                #intro-title {
+                    margin: 20px 0;
+                    font-weight: 600;
+                }
+                #intro-sect {
+                    font-size: 1.4rem;
+                }
             }
         }
-    }
-    .line {
-      border-left: 1px solid rgba(38, 38, 38, 0.3);
-    }
-    .info-wrap {
-        padding: 0 1rem;
-        .info-cont {
-            display: flex;
-            flex-wrap: wrap;
-            align-content: stretch;
-            align-items: center;
-            padding: 5px;
-            #info-icon {
-                margin-right: 1rem;
-                width: 30px;
-            }
-            .info {
-                text-align: left;
-                .info-text {
-                    font-size: 1.2rem;
-                    color: gray;
+        .line {
+            border-left: 1px solid rgba(38, 38, 38, 0.3);
+        }
+        .info-wrap {
+            padding: 0 1rem;
+            .info-cont {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: stretch;
+                align-items: center;
+                padding: 5px;
+                #info-icon {
+                    margin-right: 1rem;
+                    width: 30px;
                 }
-                .info-data {
-                    i {
-                        margin-right: 5px;
+                .info {
+                    text-align: left;
+                    .info-text {
+                        font-size: 1.2rem;
+                        color: gray;
+                    }
+                    .info-data {
+                        i {
+                            margin-right: 5px;
+                        }
+                        #git-link {
+                            color: #262626;
+                            &:hover {
+                                color: #f29f05;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-  }
 }
 </style>
