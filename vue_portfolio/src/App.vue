@@ -73,6 +73,36 @@ $white: rgba(240, 240, 242, 1);
   word-break: keep-all;
 }
 
+.title {
+  display: inline-block;
+  padding-top: 30px;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $gray;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.3);
+}
+
+.sub {
+  color: $gray;
+}
+
+.data-down {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: $gray;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 5px;
+  background: $white;
+  &:hover {
+    color: $gray;
+    background: rgba(128, 128, 128, 0.4);
+  }
+}
+
 //반응형
 //미세 조정
 @media (max-width: 480px) {

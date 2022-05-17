@@ -1,6 +1,5 @@
 <template>
   <div id="contact">
-      contact
   </div>
 </template>
 
@@ -12,6 +11,6 @@ export default {
 
 <style lang="scss" scoped>
 #contact {
-  background: orange;
+  
 }
 </style>
