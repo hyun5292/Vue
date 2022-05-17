@@ -66,6 +66,7 @@ a {
 
 #contact {
     margin-top: 72px;
+    width: 100%;
     height: calc(100vh - 72px);
     color: #262626;
     background-color: #f0f0f2;
@@ -125,4 +126,55 @@ a {
     }
 }
 
+//반응형
+//git link 글씨 크기 수정
+@media (max-width: 480px) {
+    #contact {
+        .contact-cont {
+            margin: 0 1rem;
+            .intro-wrap {
+                .intro-cont {
+                    #intro-sect {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+            .info-wrap {
+                .info-cont {
+                    .info {
+                        .info-data {
+                            #git-link {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 945px) {
+    #contact {
+        height: calc(100% - 72px);
+        .contact-cont {
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0 3rem;
+            .intro-wrap {
+                .data-down {
+                    margin: 1rem 0 2rem;
+                }
+            }
+            .line {
+                border-left: none;
+            }
+            .info-wrap {
+                padding-top: 1rem;
+                border-top: 1px solid rgba(38, 38, 38, 0.3);
+            }
+        }
+    }
+}
 </style>
