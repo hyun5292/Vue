@@ -65,7 +65,7 @@ a, ul, li {
       padding: 0 10px;
       color: #f0f0f2;
         &:hover {
-          color: #f29f05;
+          color: #f29f05 !important;
         }
     }
   }

@@ -75,7 +75,7 @@ $white: rgba(240, 240, 242, 1);
 
 .title {
   display: inline-block;
-  padding-top: 30px;
+  padding-top: 20px;
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
