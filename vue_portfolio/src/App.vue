@@ -1,18 +1,21 @@
 <template>
-  <HeaderCom/>
+  <div id="app">
+    <Header />
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import HeaderCom from './components/HeaderCom.vue'
+import Header from '@/views/headerView.vue';
 
-export default {
+export default ({
   name: 'App',
   components: {
-    HeaderCom,
-
+    Header,
   }
-}
+})
 </script>
+
 
 <style lang="scss">
 //Font
@@ -59,18 +62,8 @@ $gray-rgba: rgba(38, 38, 38, 1);
 $gray-dark-rgba: rgba(29, 29, 29, 1);
 $white: rgba(240, 240, 242, 1);
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-a, ul, li {
-  color: inherit;
-  text-decoration: none;
-  list-style: none;
-}
-
 #app {
+  position: relative;
   min-width: 360px;
   font-family: "Pretendard-Regular";
   font-size: 1.5rem;
@@ -80,4 +73,34 @@ a, ul, li {
   color: #f0f0f2;
   word-break: keep-all;
 }
+
+.title {
+  position: absolute;
+  margin-top: 1rem;
+  top: 72px;
+  left: 50%;
+  color: $gray;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  #main {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border-bottom: 1px solid rgba(38, 38, 38, 0.3);
+  }
+}
+
+//반응형
+//미세 조정
+@media (max-width: 480px) {
+  .title {
+    #main {
+      font-size: 2.5rem;
+    }
+  }
+  #app {
+    font-size: 1.2rem;
+  }
+}
+
 </style>
