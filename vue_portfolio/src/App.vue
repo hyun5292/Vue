@@ -59,6 +59,17 @@ $gray-rgba: rgba(38, 38, 38, 1);
 $gray-dark-rgba: rgba(29, 29, 29, 1);
 $white: rgba(240, 240, 242, 1);
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a, ul, li {
+  color: inherit;
+  text-decoration: none;
+  list-style: none;
+}
+
 #app {
   min-width: 360px;
   font-family: "Pretendard-Regular";
