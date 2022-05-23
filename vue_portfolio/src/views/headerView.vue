@@ -1,10 +1,12 @@
 <template>
   <div id="header">
-    <div class="logo">
-        <span>SUDOL</span> 
-        <div id="text-port">Portfolio</div>
+    <div class="header-wrap">
+      <div class="logo">
+          <span>SUDOL</span> 
+          <div id="text-port">Portfolio</div>
+      </div>
+      <HeaderCom />
     </div>
-    <HeaderCom />
   </div>
 </template>
 
@@ -33,8 +35,6 @@ export default {
 
 #header {
     position: fixed;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     top: 0;
     left: 0;
@@ -44,17 +44,23 @@ export default {
     z-index: 10;
     padding: 0 2rem;
     background-color: rgba(38, 38, 38, 0.7);
-    .logo {
-      span {
-        font-family: "HSYuji-Regular";
-        font-size: 3rem;
-        font-weight: 600;
-        color: #f2af5c;
-      }
-      #text-port {
-        display: inline-block !important;
-        margin-left: 5px;
-        font-size: 1.2rem;
+    .header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      .logo {
+        span {
+          font-family: "HSYuji-Regular";
+          font-size: 3rem;
+          font-weight: 600;
+          color: #f2af5c;
+        }
+        #text-port {
+          display: inline-block !important;
+          margin-left: 5px;
+          font-size: 1.2rem;
+        }
       }
     }
 }
