@@ -16,12 +16,14 @@
 
 //Color in Hex
 $red: #fb6d32;
-$light-green: #D4F294;
+$yellow: #fcc032;
 $green: #04BF55;
 $dark-green: #315937;
-$yellow: #fcc032;
+$blue: #0d6ba6;
+$dark-blue: #023859;
 $light-gray: #dee1e2;
 $black: #3b3d3c;
+$white: #f0f0f2;
 
 .app {
   background: $white;
