@@ -6,8 +6,8 @@
       </div>
       <div class="login">
         <div class="login_input">
-          <input type="text" class="input_id" placeholder="아이디를 입력하세요">
-          <input type="password" class="input_pw" placeholder="비밀번호를 입력하세요">
+          <input type="text" class="input_id" placeholder="아이디">
+          <input type="password" class="input_pw" placeholder="비밀번호">
         </div>
         <div class="login_button">
           <button>로그인</button> 
@@ -60,14 +60,14 @@ $black: #3b3d3c;
     width: 150px;
   }
   .login {
-    font-size: 1rem;
+    line-height: 1;
     .login_input {
-      
       input {
         display: block;
         margin: 0;
         padding: 5px;
         width: 180px;
+        font-size: 0.9rem;
         border: 1px solid $black;
       }
       .input_id {
@@ -80,8 +80,10 @@ $black: #3b3d3c;
     .login_button {
       margin: 10px auto;
       button {
+        margin-bottom: 5px;
         padding: 5px;
         width: 100%;
+        font-size: 0.9rem;
         font-weight: 600;
         background-color: white;
         border: 1px solid $black;
@@ -92,14 +94,20 @@ $black: #3b3d3c;
   .nav {
     display: flex;
     flex-flow: column;
+    padding-top: 5px;
+    font-weight: 600;
     text-align: left;
     border-top: 1px solid white;
-    i {
-      margin-right: 10px;
+    .nav-item {
+      padding: 5px 0;
+      i {
+        margin-right: 10px;
+      }
+      .nav_text {
+        display: inline-block;
+      }
     }
-    .nav_text {
-      display: inline-block;
-    }
+    
   }
 }
 
