@@ -25,6 +25,19 @@ $light-gray: #dee1e2;
 $black: #3b3d3c;
 $white: #f0f0f2;
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 360px;
+  font-family: "Pretendard-Regular";
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+  color: #f0f0f2;
+  word-break: keep-all;
+}
+
 .app {
   background: $white;
 }
