@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MainView from '../views/MainView.vue'
+import ServiceView from '../views/ServiceView.vue'
+import QnaView from '../views/QnaView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'main',
+    component: MainView
+  },
+  {
+    path: '/service',
+    name: 'service',
+    component: ServiceView
+  },
+  {
+    path: '/qna',
+    name: 'qna',
+    component: QnaView
   },
 ]
 

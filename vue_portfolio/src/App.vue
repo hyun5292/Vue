@@ -63,6 +63,8 @@ $gray-dark-rgba: rgba(29, 29, 29, 1);
 $white: rgba(240, 240, 242, 1);
 
 #app {
+  display: flex;
+  flex-flow: row;
   position: relative;
   min-width: 360px;
   font-family: "Pretendard-Regular";

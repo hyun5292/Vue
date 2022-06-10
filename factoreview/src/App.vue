@@ -1,16 +1,12 @@
 <template>
-  <SideBar />
   <router-view/>
 </template>
 
 <script>
-import SideBar from '@/views/SideBarView';
-
 export default {
   name: 'App',
   components: {
-    SideBar,
-
+    
   }
 }
 </script>
@@ -32,6 +28,7 @@ $red: #fb6d32;
 $yellow: #fcc032;
 $green: #04BF55;
 $dark-green: #315937;
+$light-blue: #55b3d9;
 $blue: #0d6ba6;
 $dark-blue: #023859;
 $light-gray: #dee1e2;
@@ -45,9 +42,8 @@ html, body {
   font-family: "Pretendard-Regular";
   font-size: 1.2rem;
   font-weight: 400;
-  text-align: center;
   line-height: 1.5;
-  color: #f0f0f2;
+  color: $black;
   word-break: keep-all;
 }
 
