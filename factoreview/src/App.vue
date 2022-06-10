@@ -1,7 +1,20 @@
 <template>
-  <div class="app"></div>
+  <SideBar />
   <router-view/>
 </template>
+
+<script>
+import SideBar from '@/views/SideBarView';
+
+export default {
+  name: 'App',
+  components: {
+    SideBar,
+
+  }
+}
+</script>
+
 
 <style lang="scss">
 //Font
