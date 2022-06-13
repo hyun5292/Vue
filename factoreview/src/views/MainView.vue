@@ -11,28 +11,16 @@
       </div>
       <div class="search">
         <div>
-          <input type="text" placeholder="공장명을 입력하세요">
+          <input name="fact_name" type="text" placeholder="공장명을 입력하세요">
           <button>
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
       </div>
-      <table class="review">
-        <thead>
-          <th width="5%">번호</th>
-          <th width="30%">공장명</th>
-          <th width="40%">주소</th>
-          <th width="25%">전화번호</th>
-        </thead>
-        <tbody>
-            <tr v-for="index in 5" :key="index">
-              <td>{{index}}</td>
-              <td>공장명1</td>
-              <td>경기도 양주시 덕정동 936</td>
-              <td>031-857-1651</td>
-            </tr>
-        </tbody>
-      </table>
+      <vue-good-table
+        :columns="columns"
+        :rows="rows"
+      />
     </div>
   </div>
 </template>
@@ -43,8 +31,35 @@ import SideBar from '@/views/SideBarView';
 export default {
   name: 'MainView',
   data() {
+    const columns = [
+      {
+        label: '번호',
+        field: 'id',
+        type: 'number'
+      },
+      {
+        label: '공장명',
+        field: 'name',
+      },
+      {
+        label: '주소',
+        field: 'addr',
+      },
+      {
+        label: '전화번호',
+        field: 'tel',
+      },
+    ];
+    const rows = [
+      { id:1, name: '공장명1', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:2, name: '공장명2', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:3, name: '공장명3', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:4, name: '공장명4', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:5, name: '공장명5', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:6, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
+    ]
 
-    return {  }
+    return { columns, rows, }
   },
   components: {
     SideBar,
@@ -92,6 +107,7 @@ $dark-blue: #023859;
           width: 50%;
           height: 40px;
           vertical-align: middle;
+          font-size: 1rem;
           border: 1px solid $black;
           border-radius: 5px;
         }
