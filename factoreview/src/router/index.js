@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueGoodTablePlugin from 'vue-good-table';
 import MainView from '../views/MainView.vue'
 import ServiceView from '../views/ServiceView.vue'
 import QnaView from '../views/QnaView.vue'
 
+// import the styles
+import 'vue-good-table/dist/vue-good-table.css'
+	
+Vue.use(VueGoodTablePlugin);
 Vue.use(VueRouter)
 
 const routes = [

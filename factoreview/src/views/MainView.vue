@@ -20,6 +20,13 @@
       <vue-good-table
         :columns="columns"
         :rows="rows"
+        max-height="300px"
+        :line-numbers="true"
+        :pagination-options="{
+          enabled: true,
+          mode: 'records',
+          perPage: 5
+        }"
       />
     </div>
   </div>
@@ -32,11 +39,6 @@ export default {
   name: 'MainView',
   data() {
     const columns = [
-      {
-        label: '번호',
-        field: 'id',
-        type: 'number'
-      },
       {
         label: '공장명',
         field: 'name',
@@ -57,6 +59,10 @@ export default {
       { id:4, name: '공장명4', addr: '경기도 파주시', tel: '031-111-1111' },
       { id:5, name: '공장명5', addr: '경기도 파주시', tel: '031-111-1111' },
       { id:6, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:7, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:8, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:9, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
+      { id:10, name: '공장명6', addr: '경기도 파주시', tel: '031-111-1111' },
     ]
 
     return { columns, rows, }
