@@ -59,7 +59,8 @@ a {
     left: 0;
     width: 250px;
     height: 100vh;
-    overflow-x: hidden;
+    text-align: center;
+    overflow: hidden;
     background-color: $blue;
     .main_logo {
         margin: 1rem auto;
