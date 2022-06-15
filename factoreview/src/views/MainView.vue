@@ -11,7 +11,7 @@
       </div>
       <div class="search">
         <div>
-          <input name="fact_name" type="text" placeholder="공장명을 입력하세요">
+          <input id="fact_name" type="text" placeholder="공장명을 입력하세요">
           <button>
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>

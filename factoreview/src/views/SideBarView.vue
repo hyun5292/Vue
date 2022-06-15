@@ -14,13 +14,13 @@
       </div>
     </div>
     <div class="nav">
-      <router-link to="/service" class="nav-item" name="service_info">
-        <i class="fa-solid fa-circle-info" name="nav_icon"></i>
-        <div class="nav_text" name="service_info_text">서비스 소개</div>
+      <router-link to="/service" class="nav-item" id="service_info">
+        <i class="fa-solid fa-circle-info" id="nav_icon"></i>
+        <div class="nav_text" id="service_info_text">서비스 소개</div>
       </router-link>
-      <router-link to="/qna" class="nav-item" name="qna">
-        <i class="fa-solid fa-circle-question" name="nav_icon"></i>
-        <div class="nav_text" name="qna_text">문의하기</div>
+      <router-link to="/qna" class="nav-item" id="qna">
+        <i class="fa-solid fa-circle-question" id="nav_icon"></i>
+        <div class="nav_text" id="qna_text">문의하기</div>
       </router-link>
     </div>
   </div>
@@ -95,7 +95,6 @@ a {
                 background-color: white;
                 border: 1px solid $black;
                 border-radius: 5px;
-                cursor: pointer;
                 &:hover {
                     color: white;
                     background-color: $light-blue;

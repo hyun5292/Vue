@@ -11,29 +11,37 @@
       </div>
       <div class="info">
         <div class="qna">
-          <span name="qna_title">Q. 만들게 된 계기?</span>
-          <div name="qna_answer">아빠가 화물차 기사이신데 ~ 집오면 ~ 다녀온 공장 얘기를 하고 아는 기사 분들이랑 공유하고 ~</div>
+          <span class="qna_title">Q. 만들게 된 계기?</span>
+          <div class="qna_answer">
+            아빠가 화물차 기사이신데 ~ 집오면 ~<br/>
+            다녀온 공장 얘기를 하고 아는 기사 분들이랑 공유하고 ~</div>
         </div>
         <div class="qna">
-          <span name="qna_title">Q. 사용한 툴, API, 기타 등등?</span>
-          <div name="qna_answer">
-            <div name="qna_answer_item">
-              <div class="qna_answer_icon">
-                <img name="vscode_logo" src="@/assets/sprite.png" alt="VSCode 로고">
+          <span class="qna_title">Q. 사용한 툴, API, 기타 등등?</span>
+          <div class="qna_answer">
+            <div class="qna_answer_item">
+              <div class="qna_answer_icon" id="vscode_logo">
+                VSCode 로고
               </div>
               <div class="qna_answer_text">VSCode</div>
             </div>
-            <div name="qna_answer_item">
-              <div class="qna_answer_icon">
-                <img name="vue_logo" src="@/assets/sprite.png" alt="Vue 로고">
+            <div class="qna_answer_item">
+              <div class="qna_answer_icon" id="vue_logo">
+                Vue 로고
               </div>
               <div class="qna_answer_text">Vue2</div>
+            </div>
+            <div class="qna_answer_item">
+              <div class="qna_answer_icon" id="sass_logo">
+                Sass 로고
+              </div>
+              <div class="qna_answer_text">Sass</div>
             </div>
           </div>
         </div>
         <div class="qna">
-          <span name="qna_title">Q. 연락처(클릭 시 복사 됨)</span>
-          <div name="qna_answer">
+          <span class="qna_title">Q. 연락처(클릭 시 복사 됨)</span>
+          <div class="qna_answer">
             <button>Email</button>
             <button>Github</button>
             <button>Phone</button>
@@ -90,37 +98,48 @@ $dark-blue: #023859;
       border-radius: 5px;
       .qna {
         margin: 10px;
-        span {
+        min-width: 40%;
+        .qna_title {
           font-weight: 600;
         }
-        #qna_answer {
-          #qna_answer_item {
-            .qna_aswer_icon {
-              img {
-                display: inline-block;
-                margin: 10px;
-                width: 80px;
-                height: 80px;
-                -webkit-transition: all 0.2s ease-in;
-                transition: all 0.2s ease-in;
-              }
-              #vscode_logo {
-                background-position: 0 0;
-              }
-              #vue_logo {
-                background-position: 0 -80px;
-              }
+        .qna_answer {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+          .qna_answer_item {
+            .qna_answer_icon {
+              width: 80px;
+              height: 80px;
+              color: transparent;
+              background: url(../assets/sprite.png) no-repeat;
             }
-            .qna_answer_text {
-
+            #vscode_logo {
+              background-position: 0 0;
+            }
+            #vue_logo {
+              background-position: -80px 0;
+            }
+            #sass_logo {
+              background-position: -160px 0;
             }
           }
           button {
+            display: block;
+            margin: 5px 0;
+            padding: 5px 0;
+            width: 100%;
+            font-size: 1.5rem;
             color: white;
             background-color: $light-blue;
             border: none;
             border-radius: 5px;
+            &:hover {
+              background-color: $dark-blue;
+            }
           }
+        }
+        &:first-child {
+          width: 100%;
         }
       }
     }

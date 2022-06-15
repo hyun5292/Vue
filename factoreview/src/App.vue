@@ -46,6 +46,10 @@ html, body {
   word-break: keep-all;
 }
 
+button {
+  cursor: pointer;
+}
+
 .app {
   background: $white;
 }
