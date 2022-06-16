@@ -54,9 +54,12 @@
                 </div>
                 <div class="dev_info">
                     <span>개발자 정보</span>
-                    <button>Email</button>
-                    <button>Github</button>
-                    <button>Phone</button>
+                    <div class="dev_info_btns">
+                        <button>Email</button>
+                        <button>Github</button>
+                        <button>Phone</button>
+                    </div>
+                    <span class="copy">© 2022. Park Su Hyun. All rights reserved.</span>
                 </div>
           </div>
           <div class="join_btns">      
@@ -128,7 +131,8 @@ input {
     .main {
         display: flex;
         flex-flow: wrap;
-        padding: 5px 0 0;
+        justify-content: right;
+        margin: 10px 0;
         .info, .agree, .dev_info {
             box-sizing: border-box;
             min-width: 50%;
@@ -167,7 +171,7 @@ input {
                 #item_email {
                     display: flex;
                     flex-flow: row wrap;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                     input, select {
                         width: calc(50% - 20px);
                     }
@@ -185,15 +189,33 @@ input {
             height: 50%;
         }
         .dev_info {
-
+            .dev_info_btns {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                button {
+                    width: 30%;
+                    font-size: 1.5rem;
+                    color: white;
+                    background-color: $light-blue;
+                    &:hover {
+                        background-color: $dark-blue;
+                    }
+                }
+            }
+            .copy {
+                font-size: 1rem;
+                font-weight: 400;
+                justify-content: center;
+            }
         }
     }
     .join_btns {
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
         button {
-            margin: 10px 5px 10px;
+            padding: 7px 0;
             font-size: 1rem;
             color: white;
             width: calc(50% - 10px);
