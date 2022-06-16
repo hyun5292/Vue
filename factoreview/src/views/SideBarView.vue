@@ -92,13 +92,9 @@ a {
             margin: 10px auto;
             button {
                 margin-bottom: 5px;
-                padding: 5px;
                 width: 100%;
-                font-size: 0.9rem;
-                font-weight: 600;
                 background-color: white;
                 border: 1px solid $black;
-                border-radius: 5px;
                 &:hover {
                     color: white;
                     background-color: $light-blue;

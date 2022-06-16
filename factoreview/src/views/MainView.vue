@@ -121,8 +121,6 @@ $dark-blue: #023859;
           width: 40px;
           height: 40px;
           background-color: $dark-blue;
-          border: none;
-          border-radius: 5px;
           i {
             font-size: 1rem;
             color: white;

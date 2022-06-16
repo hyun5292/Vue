@@ -31,6 +31,7 @@ $light-blue: #55b3d9;
 $blue: #0d6ba6;
 $dark-blue: #023859;
 $light-gray: #dee1e2;
+$gray: #f0f0f2;
 $black: #3b3d3c;
 $white: #f0f0f2;
 
@@ -44,13 +45,15 @@ html, body {
   line-height: 1.5;
   color: $black;
   word-break: keep-all;
+  background: $gray;
 }
 
 button {
+  padding: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-}
-
-.app {
-  background: $white;
 }
 </style>

@@ -126,13 +126,10 @@ $dark-blue: #023859;
           button {
             display: block;
             margin: 5px 0;
-            padding: 5px 0;
             width: 100%;
             font-size: 1.5rem;
             color: white;
             background-color: $light-blue;
-            border: none;
-            border-radius: 5px;
             &:hover {
               background-color: $dark-blue;
             }
