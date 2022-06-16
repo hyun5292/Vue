@@ -9,8 +9,12 @@
         <input type="password" class="input_pw" placeholder="비밀번호">
       </div>
       <div class="login_button">
-        <button>로그인</button> 
-        <button>회원가입</button> 
+        <router-link to="">
+          <button>로그인</button> 
+        </router-link> 
+        <router-link to="/join">
+          <button>회원가입</button>
+        </router-link> 
       </div>
     </div>
     <div class="nav">

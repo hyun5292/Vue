@@ -4,6 +4,7 @@ import VueGoodTablePlugin from 'vue-good-table';
 import MainView from '../views/MainView.vue'
 import ServiceView from '../views/ServiceView.vue'
 import QnaView from '../views/QnaView.vue'
+import JoinView from '../views/JoinView.vue'
 
 // import the styles
 import 'vue-good-table/dist/vue-good-table.css'
@@ -26,6 +27,11 @@ const routes = [
     path: '/qna',
     name: 'qna',
     component: QnaView
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: JoinView
   },
 ]
 
