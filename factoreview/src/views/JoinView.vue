@@ -34,7 +34,7 @@
                             <input type="number" id="mTel">
                             -
                             <input type="number" id="mTel">
-                            <button>인증하기</button> 
+                            <button id="cert">인증하기</button> 
                         </div>
                     </div>
                     <div class="info_item">
@@ -49,17 +49,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="agree">
-                    <span>수신동의</span>
-                </div>
-                <div class="dev_info">
-                    <span>개발자 정보</span>
-                    <div class="dev_info_btns">
-                        <button>Email</button>
-                        <button>Github</button>
-                        <button>Phone</button>
+                <div class="right">
+                    <div class="agree">
+                        <span>수신동의</span>
+                        <div class="agree_item">
+                            <input type="checkbox" id="agree_item_sms">
+                            <label for="checkbox">SMS 수신 동의</label>
+                        </div>
+                        <div class="agree_item">
+                            <input type="checkbox" id="agree_item_email">
+                            <label for="checkbox">Email 수신 동의</label>
+                        </div>
+                        <div class="agree_item">
+                            <input type="checkbox" id="agree_item_swear">
+                            <label for="checkbox">비방적인 글 및 모욕 글 작성 금지 동의</label>
+                        </div>
                     </div>
-                    <span class="copy">© 2022. Park Su Hyun. All rights reserved.</span>
+                    <div class="dev_info">
+                        <span>개발자 정보</span>
+                        <div class="dev_info_btns">
+                            <button>Email</button>
+                            <button>Github</button>
+                            <button>Phone</button>
+                        </div>
+                        <span class="copy">© 2022. Park Su Hyun. All rights reserved.</span>
+                    </div>
                 </div>
           </div>
           <div class="join_btns">      
@@ -95,7 +109,12 @@ span {
     line-height: 1;
 }
 
+input, select {
+    height: 40px;
+}
+
 input {
+    box-sizing: border-box;
     margin: 5px 0;
     padding: 5px;
     width: calc(100% - 10px);
@@ -107,6 +126,13 @@ input {
         -webkit-appearance: none;
         margin: 0;
     }
+}
+
+
+select {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
 }
 
 .join {
@@ -130,83 +156,89 @@ input {
     }
     .main {
         display: flex;
-        flex-flow: wrap;
-        justify-content: right;
-        margin: 10px 0;
+        .info, .right {
+            width: 50%;
+        }
         .info, .agree, .dev_info {
-            box-sizing: border-box;
-            min-width: 50%;
+            padding: 12px 0;
         }
         .info {
             display: flex;
             flex-flow: row wrap;
             justify-content: space-between;
             padding-right: 10px;
-            width: 50%;
             border-right: 1px solid $black;
             #item_id, #item_pw {
-                padding-top: 0;
-                width: calc(50% - 10px);
-                input {
-                    width: calc(100% - 10px);
-                }
+                width: 50%;
             }
             .info_item {
-                text-align: left;
-                padding: 5px 0;
                 width: 100%;
-                .inputs {
-                    #mTel {
-                        width: calc((100% - 60px) / 4);
-                    }
-                    button {
-                        margin-left: 11px;
-                        color: white;
-                        background-color: $blue;
-                        &:hover {
-                            background-color: $light-blue;
-                        }
-                    }
+                #mTel {
+                    width: calc((100% - 30px) / 4);
                 }
-                #item_email {
-                    display: flex;
-                    flex-flow: row wrap;
-                    justify-content: space-between;
-                    input, select {
-                        width: calc(50% - 20px);
-                    }
-                    select {
-                        text-align: center;
-                        border: none;
-                        border-radius: 5px;
+                #cert {
+                    margin-left: 11px;
+                    height: 40px;
+                    color: white;
+                    background-color: $blue;
+                    &:hover {
+                        background-color: $light-blue;
                     }
                 }
             }
-        }
-        .agree {
-            border-bottom: 1px solid $black;
-            padding-left: 5px;
-            height: 50%;
-        }
-        .dev_info {
-            .dev_info_btns {
+            #item_email {
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-between;
-                button {
-                    width: 30%;
-                    font-size: 1.5rem;
-                    color: white;
-                    background-color: $light-blue;
-                    &:hover {
-                        background-color: $dark-blue;
+                input, select {
+                    width: calc(50% - 5px);
+                }
+                select {
+                    margin-top: 5px;
+                }
+            }
+        }
+        .right {
+            padding-left: 10px;
+            .agree {
+                border-bottom: 1px solid $black;
+                .agree_item {
+                    display: flex;
+                    align-items: center;
+                    padding: 5px 0;
+                    input {
+                        margin-right: 10px;
+                        width: 40px;
+                    }
+                    label {
+                        
                     }
                 }
             }
-            .copy {
-                font-size: 1rem;
-                font-weight: 400;
-                justify-content: center;
+            .dev_info {
+                span {
+                    padding-bottom: 10px;
+                }
+                .dev_info_btns {
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    button {
+                        width: 30%;
+                        font-size: 1.5rem;
+                        color: white;
+                        background-color: $light-blue;
+                        &:hover {
+                            background-color: $dark-blue;
+                        }
+                    }
+                }
+                .copy {
+                    margin-top: 10px;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    justify-content: center;
+                }
             }
         }
     }
