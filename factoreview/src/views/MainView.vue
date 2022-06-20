@@ -70,6 +70,9 @@ export default {
   components: {
     SideBar,
 
+  },
+  methods: {
+    
   }
 }
 </script>
