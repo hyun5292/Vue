@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueGoodTablePlugin from 'vue-good-table';
 import MainView from '../views/MainView.vue'
-import ReView from '../views/ReView.vue'
+import ReViewList from '../views/ReViewList.vue'
+import Review from '../views/Review.vue'
 import ServiceView from '../views/ServiceView.vue'
 import QnaView from '../views/QnaView.vue'
 import JoinView from '../views/JoinView.vue'
@@ -22,7 +23,12 @@ const routes = [
   {
     path: '/review',
     name: 'review',
-    component: ReView
+    component: Review
+  },
+  {
+    path: '/rList',
+    name: 'reviewList',
+    component: ReViewList
   },
   {
     path: '/service',

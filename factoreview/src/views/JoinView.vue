@@ -210,9 +210,6 @@ select {
                         margin-right: 10px;
                         width: 40px;
                     }
-                    label {
-                        
-                    }
                 }
             }
             .dev_info {

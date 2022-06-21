@@ -20,7 +20,7 @@
       <vue-good-table
         :columns="columns"
         :rows="rows"
-        max-height="300px"
+        max-height="45vh"
         :line-numbers="true"
         :pagination-options="{
           enabled: true,

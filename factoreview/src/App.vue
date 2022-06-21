@@ -1,4 +1,4 @@
-<template>
+<template>  
   <router-view/>
 </template>
 
@@ -31,6 +31,7 @@ $light-blue: #55b3d9;
 $blue: #0d6ba6;
 $dark-blue: #023859;
 $light-gray: #dee1e2;
+$light-gray2: #eaeaea;
 $gray: #f0f0f2;
 $black: #3b3d3c;
 $white: #f0f0f2;
