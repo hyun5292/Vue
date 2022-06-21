@@ -2,27 +2,46 @@
   <div class="qna">
     <SideBar />
     <div class="cont">
-      <div class="title">
-        <img class="main_logo" src="@/assets/vertLogo.png" alt="팩토리뷰 가로 로고">
-        <div class="sub_title">
-          회원님들의 문의 내역입니다<br/>
-          궁금하신 내용은 언제든지 물어봐주시면 성실하게 답변해드리겠습니다
+        <div class="title">
+            <div class="title_btn">
+                <button>목록으로</button>
+                <button>수정</button>
+                <button>삭제</button>
+            </div>
         </div>
-      </div>
-      <button class="search">
-        문의하기
-      </button>
-      <vue-good-table
-        :columns="columns"
-        :rows="rows"
-        max-height="300px"
-        :line-numbers="true"
-        :pagination-options="{
-          enabled: true,
-          mode: 'records',
-          perPage: 5
-        }"
-      />
+        <table class="qna_info">
+            <tr>
+                <td colspan="3">제목입니다1</td>
+            </tr>
+            <tr>
+                <td width="15%">아이디1</td>
+                <td width="75%">2020-12-25</td>
+                <td width="10%">300</td>
+            </tr>
+            <tr>
+                <td>첨부파일</td>
+                <td colspan="2">첨부사진제목.jpg</td>
+            </tr>
+            <tr class="table_cont_tr">
+                <td colspan="3" class="table_cont_td">
+                    내용입니다.
+                </td>
+            </tr>
+        </table>
+        <div id="others">
+            <div class="other" id="before">
+                <span>이전글 ▲</span>
+                <router-link to="#" class="other_link" id="before_text">
+                    이전글입니다.
+                </router-link>
+            </div>
+            <div class="other" id="after">
+                <span>다음글 ▼</span>
+                <router-link to="#" class="other_link" id="after_text">
+                    다음글입니다.
+                </router-link>
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -32,84 +51,108 @@ import SideBar from '@/views/SideBarView';
 
 export default {
     name: 'QnaView',
-    data() {
-      const columns = [
-        {
-          label: '제목',
-          field: 'title',
-        },
-        {
-          label: '작성자',
-          field: 'writer',
-        },
-        {
-          label: '날짜',
-          field: 'date',
-        },
-        {
-          label: '조회수',
-          field: 'cnt',
-        },
-      ];
-      const rows = [
-        { id:1, title: '제목입니다1', writer: '아이디1', date: '2022-02-27', cnt: 15 },
-        { id:2, title: '제목입니다2', writer: '아이디2', date: '2022-02-26', cnt: 12 },
-        { id:3, title: '제목입니다3', writer: '아이디3', date: '2022-02-25', cnt: 23 },
-        { id:4, title: '제목입니다4', writer: '아이디4', date: '2022-02-24', cnt: 21 },
-        { id:5, title: '제목입니다5', writer: '아이디5', date: '2022-02-22', cnt: 11 },
-        { id:6, title: '제목입니다6', writer: '아이디6', date: '2022-02-17', cnt: 15 },
-        { id:7, title: '제목입니다7', writer: '아이디7', date: '2022-02-13', cnt: 14 },
-        { id:8, title: '제목입니다8', writer: '아이디8', date: '2022-02-07', cnt: 13 },
-        { id:9, title: '제목입니다9', writer: '아이디9', date: '2022-02-02', cnt: 12 },
-      ]
-
-      return { columns, rows, }
-    },
     components: {
-        SideBar,
-    }
+      SideBar,
+
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 //Color in Hex
+$light-blue: #55b3d9;
 $blue: #0d6ba6;
 $black: #3b3d3c;
 $dark-blue: #023859;
+$light-gray2: #eaeaea;
 
-.qna {
-  display: flex;
-  top: 0;
-  left: 0;
-  .cont {
-    box-sizing: border-box;
-    width: calc(100% - 250px);
-    padding: 20px;
-    .title {
-      border-bottom: 1px solid $black;
-      .main_logo {
-        width: 500px;
-      }
-      .sub_title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: $dark-blue;
-      }
-    }
-    .search {
-      margin: 10px 0;
-      width: 100%;
-      height: 50px;
-      font-size: 1.2rem;
-      color: white;
-      background-color: $blue;
-      border: none;
-      border-radius: 5px;
-      &:hover {
-        background-color: $dark-blue;
-      }
-    }
-  }
+a {
+    text-decoration: none;
 }
 
+.qna {
+    display: flex;
+    top: 0;
+    left: 0;
+    .cont {
+        box-sizing: border-box;
+        width: calc(100% - 250px);
+        padding: 20px;
+        .title {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 5px 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            background-color: $blue;
+            border-radius: 5px;
+            span {
+                flex: 1 1 80%;
+            }
+            .title_btn {
+                flex: 1 1 20%;
+                margin-right: 5px;
+                text-align: right;
+                button {
+                    color: white;
+                    background-color: $light-blue;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .qna_info {
+            margin: 10px 0;
+            width: 100%;
+            border-spacing: 0;
+            tr, td {
+                padding: 5px;
+                border: 1px solid $black;
+                background-color: $light-gray2;
+            }
+            tr {
+                .table_cont_td {
+                    height: 45vh;
+                    max-height: 45vh;
+                }
+                &:first-child {
+                    td {
+                        border-radius: 5px 5px 0 0;
+                    }
+                }
+                &:last-child {
+                    td {
+                        background-color: white;
+                        border-radius: 0 0 5px 5px;
+                    }
+                }
+            }
+        }
+        #others {
+            .other {
+                display: flex;
+                span, .other_link {
+                    padding: 5px;
+                    color: white;
+                    background-color: $light-blue;
+                    border-radius: 5px;
+                }
+                span {
+                    flex: 1 1 10%;
+                    margin-right: 10px;
+                    text-align: center;
+                }
+                .other_link {
+                    flex: 1 1 90%;
+                    &:hover {
+                        background-color: $dark-blue;
+                    }
+                }
+            }
+            #before {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
 </style>

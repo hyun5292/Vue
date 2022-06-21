@@ -5,6 +5,7 @@ import MainView from '../views/MainView.vue'
 import ReViewList from '../views/ReViewList.vue'
 import Review from '../views/Review.vue'
 import ServiceView from '../views/ServiceView.vue'
+import QnaListView from '../views/QnaListView.vue'
 import QnaView from '../views/QnaView.vue'
 import JoinView from '../views/JoinView.vue'
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/service',
     name: 'service',
     component: ServiceView
+  },
+  {
+    path: '/qList',
+    name: 'qnaList',
+    component: QnaListView
   },
   {
     path: '/qna',
