@@ -8,6 +8,7 @@ import ServiceView from '../views/ServiceView.vue'
 import QnaListView from '../views/QnaListView.vue'
 import QnaView from '../views/QnaView.vue'
 import JoinView from '../views/JoinView.vue'
+import myReview from '../views/MyReview.vue'
 
 // import the styles
 import 'vue-good-table/dist/vue-good-table.css'
@@ -50,6 +51,11 @@ const routes = [
     path: '/join',
     name: 'join',
     component: JoinView
+  },
+  {
+    path: '/myreview',
+    name: 'myReview',
+    component: myReview
   },
 ]
 
