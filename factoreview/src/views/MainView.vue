@@ -85,8 +85,6 @@ $dark-blue: #023859;
 
 .main {
   display: flex;
-  top: 0;
-  left: 0;
   .cont {
     box-sizing: border-box;
     width: calc(100% - 250px);

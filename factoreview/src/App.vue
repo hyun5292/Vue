@@ -50,7 +50,7 @@ html, body {
 }
 
 a {
-  color: white;
+  color: white;    
   text-decoration: none;
 }
 
@@ -61,7 +61,8 @@ tr, td {
 
 button {
   padding: 5px;
-  font-size: 0.9rem;
+  font-family: "Pretendard-Regular";
+  font-size: 1rem;
   font-weight: 600;
   border: none;
   border-radius: 5px;

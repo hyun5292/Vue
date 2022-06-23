@@ -2,7 +2,7 @@
   <div class="qWrite">
     <SideBar />
     <div class="cont">
-        <div class="title">
+        <div id="fact_name">
             <span>공장명1</span>
         </div>
         <table class="info">
@@ -28,8 +28,10 @@
           </tr>
       </table>
       <div class="btns">
-        <router-link to="/qList">목록으로</router-link>
-        <button>작성하기</button>
+        <router-link to="/qList" class="toqList">
+          <span>목록으로</span>
+        </router-link>
+        <button class="write_btn">작성하기</button>
       </div>
     </div>
   </div>
@@ -57,13 +59,45 @@ $light-gray2: #eaeaea;
 
 .qWrite {
   display: flex;
-  top: 0;
-  left: 0;
-  .title {
-
-  }
-  .info {
-    
+  .cont {
+    box-sizing: border-box;
+    width: calc(100% - 250px);
+    padding: 20px;
+    #fact_name {
+        margin: 10px 0;
+        padding: 5px 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+        background-color: $blue;
+        border-radius: 5px;
+    }
+    .info {
+      margin: 10px 0;
+    }
+    .btns {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      .toqList, .write_btn {
+        width: calc(50% - 5px);
+        &:hover {
+          background-color: $dark-blue;
+        }
+      }
+      .toqList {
+        background-color: $light-blue;
+        border-radius: 5px;
+        span {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+      }
+      .write_btn {
+        color: white;
+        background-color: $blue;
+      }
+    }
   }
 }
 
