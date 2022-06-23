@@ -22,7 +22,7 @@
         <i class="fa-solid fa-circle-info" id="nav_icon"></i>
         <div class="nav_text" id="service_info_text">서비스 소개</div>
       </router-link>
-      <router-link to="/qna" class="nav-item" id="qna">
+      <router-link to="/qList" class="nav-item" id="qna">
         <i class="fa-solid fa-circle-question" id="nav_icon"></i>
         <div class="nav_text" id="qna_text">문의하기</div>
       </router-link>

@@ -67,10 +67,6 @@ $black: #3b3d3c;
 $dark-blue: #023859;
 $light-gray2: #eaeaea;
 
-a {
-    text-decoration: none;
-}
-
 .review {
     display: flex;
     top: 0;
@@ -107,8 +103,6 @@ a {
             width: 100%;
             border-spacing: 0;
             tr, td {
-                padding: 5px;
-                border: 1px solid $black;
                 background-color: $light-gray2;
             }
             tr {

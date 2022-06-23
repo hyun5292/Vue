@@ -49,6 +49,16 @@ html, body {
   background: $gray;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+tr, td {
+  padding: 5px;
+  border: 1px solid $black;
+}
+
 button {
   padding: 5px;
   font-size: 0.9rem;

@@ -6,6 +6,7 @@ import ReViewList from '../views/ReViewList.vue'
 import Review from '../views/Review.vue'
 import ServiceView from '../views/ServiceView.vue'
 import QnaListView from '../views/QnaListView.vue'
+import QnaWriteView from '../views/QnaWriteView.vue'
 import QnaView from '../views/QnaView.vue'
 import JoinView from '../views/JoinView.vue'
 import myReview from '../views/MyReview.vue'
@@ -46,6 +47,11 @@ const routes = [
     path: '/qna',
     name: 'qna',
     component: QnaView
+  },
+  {
+    path: '/qWrite',
+    name: 'qWrite',
+    component: QnaWriteView
   },
   {
     path: '/join',
