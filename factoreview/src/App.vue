@@ -59,6 +59,15 @@ tr, td {
   border: 1px solid $black;
 }
 
+input {
+  font-size: 1rem;
+}
+
+textarea {
+  font-family: "Pretendard-Regular";
+  font-size: 1.1rem;
+}
+
 button {
   padding: 5px;
   font-family: "Pretendard-Regular";

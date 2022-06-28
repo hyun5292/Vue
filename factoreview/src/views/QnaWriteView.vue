@@ -12,18 +12,24 @@
               </td>
           </tr>
           <tr>
-              <td width="15%" class="info_coll"><span>아이디1</span></td>
-              <td width="85%" class="info_coll"><span>2020-12-25</span></td>
+              <td width="15%"><span>아이디1</span></td>
+              <td width="85%"><span>2020-12-25</span></td>
           </tr>
           <tr>
-              <td class="info_coll"><span>첨부파일</span></td>
-              <td class="info_coll">
+              <td><span>첨부파일</span></td>
+              <td>
                 <button>내PC</button>
               </td>
           </tr>
           <tr class="table_cont_tr">
               <td colspan="2" class="table_cont_td info_input">
-                  <textarea name="" id="info_cont" cols="30" rows="10"></textarea>
+                  <textarea 
+                    name="" 
+                    id="info_cont" 
+                    cols="30" 
+                    rows="10"
+                    placeholder="내용을 입력해주세요">
+                  </textarea>
               </td>
           </tr>
       </table>
@@ -79,24 +85,20 @@ tr, td {
       margin: 10px 0;
       width: 100%;
       border-spacing: 0px;
-      //border-collapse: collapse;
-      background-color: white;
       span {
         padding: 5px;
       }
-      #info_title {
+      #info_title, #info_cont {
         box-sizing: border-box;
         width: 100%;
+      }
+      #info_title {
         height: 40px;
-        font-size: 1rem;
         border-radius: 5px 5px 0 0;
         border: 1px solid $black;
       }
       #info_cont {
-        box-sizing: border-box;
-        width: 100%;
         height: 50vh;
-        font-size: 1.2rem;
         border-radius: 0 0 5px 5px;
       }
       .info_input {
