@@ -34,7 +34,7 @@
           </tr>
       </table>
       <div class="btns">
-        <router-link to="/qList" class="toqList">
+        <router-link to="/qList" class="toQList">
           <span>목록으로</span>
         </router-link>
         <button class="write_btn">작성하기</button>
@@ -99,6 +99,7 @@ tr, td {
       }
       #info_cont {
         height: 50vh;
+        resize: none;
         border-radius: 0 0 5px 5px;
       }
       .info_input {
@@ -110,14 +111,14 @@ tr, td {
       display: flex;
       justify-content: space-between;
       text-align: center;
-      .toqList, .write_btn {
+      .toQList, .write_btn {
         padding: 5px 0;
         width: calc(50% - 5px);
         &:hover {
           background-color: $dark-blue;
         }
       }
-      .toqList {
+      .toQList {
         background-color: $light-blue;
         border-radius: 5px;
         span {

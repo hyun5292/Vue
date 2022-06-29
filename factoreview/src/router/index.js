@@ -4,6 +4,7 @@ import VueGoodTablePlugin from 'vue-good-table';
 import MainView from '../views/MainView.vue'
 import ReViewList from '../views/ReViewList.vue'
 import Review from '../views/Review.vue'
+import ReWriteView from '../views/RevWriteView.vue'
 import ServiceView from '../views/ServiceView.vue'
 import QnaListView from '../views/QnaListView.vue'
 import QnaWriteView from '../views/QnaWriteView.vue'
@@ -32,6 +33,11 @@ const routes = [
     path: '/rList',
     name: 'reviewList',
     component: ReViewList
+  },
+  {
+    path: '/rWrite',
+    name: 'rWrite',
+    component: ReWriteView
   },
   {
     path: '/service',
